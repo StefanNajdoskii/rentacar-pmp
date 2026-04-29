@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\item_booking.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\item_booking.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\fragment_car_detail.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\fragment_car_detail.xml"
+    },
+    {
+        "merged": "com.rentacar.app-mergeDebugResources-72:/layout/fragment_profile.xml",
+        "source": "com.rentacar.app-main-75:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.rentacar.app-mergeDebugResources-72:/layout/dialog_display_name.xml",
+        "source": "com.rentacar.app-main-75:/layout/dialog_display_name.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\fragment_car_list.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\fragment_car_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\fragment_booking_history.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\fragment_booking_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\fragment_booking.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\fragment_booking.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\item_spec.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\item_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\fragment_profile.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\item_car.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\item_car.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-mergeDebugResources-72:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\8.4\\com.rentacar.app-main-75:\\layout\\activity_register.xml"
+    }
+]

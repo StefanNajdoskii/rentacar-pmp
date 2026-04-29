@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.rentacar.app-mergeDebugResources-71:/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\cdb42ab663afabc8aedccea1d47362e6\\transformed\\appcompat-1.6.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}
