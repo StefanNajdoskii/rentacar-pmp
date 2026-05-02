@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RangeSlider requires a typed-array of floats for initial values -->
+    <array name="price_slider_defaults">
+        <item>0</item>
+        <item>500</item>
+    </array>
+
+    <array name="year_slider_defaults">
+        <item>2000</item>
+        <item>2025</item>
+    </array>
+
+    <!-- Pickup location options shown in the booking flow -->
+    <string-array name="pickup_locations">
+        <item>Airport</item>
+        <item>City Center</item>
+        <item>North Station</item>
+        <item>South Bus Station</item>
+        <item>East District</item>
+    </string-array>
+</resources>

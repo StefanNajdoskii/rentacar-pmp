@@ -1,22 +1,30 @@
 package com.rentacar.messaging
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.os.Build
-import androidx.core.app.NotificationCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.rentacar.MainActivity
 import com.rentacar.R
+import com.rentacar.data.remote.FirestoreRepository
+import com.rentacar.notifications.NotificationHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RentACarMessagingService : FirebaseMessagingService() {
 
+    override fun onCreate() {
+        super.onCreate()
+        NotificationHelper.createChannels(this)
+    }
+
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        // In production: send token to your server / save to Firestore under user document
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                FirestoreRepository().saveFcmToken(userId, token)
+            } catch (_: Exception) { /* non-critical */ }
+        }
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
@@ -30,44 +38,34 @@ class RentACarMessagingService : FirebaseMessagingService() {
             ?: remoteMessage.data["body"]
             ?: ""
 
-        showNotification(title, body)
+        val channelId = remoteMessage.data["channel"]
+            ?: NotificationHelper.CHANNEL_BOOKINGS
+
+        showNotification(title, body, channelId)
     }
 
-    private fun showNotification(title: String, body: String) {
-        val channelId = CHANNEL_ID
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private fun showNotification(title: String, body: String, channelId: String) {
+        NotificationHelper.createChannels(this)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                getString(R.string.notification_channel_name),
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            notificationManager.createNotificationChannel(channel)
+        android.app.PendingIntent.getActivity(
+            this, 0,
+            android.content.Intent(this, com.rentacar.MainActivity::class.java).apply {
+                addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            },
+            android.app.PendingIntent.FLAG_ONE_SHOT or android.app.PendingIntent.FLAG_IMMUTABLE
+        ).let { pi ->
+            val notification = androidx.core.app.NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setStyle(androidx.core.app.NotificationCompat.BigTextStyle().bigText(body))
+                .setAutoCancel(true)
+                .setContentIntent(pi)
+                .setPriority(androidx.core.app.NotificationCompat.PRIORITY_HIGH)
+                .build()
+
+            (getSystemService(NOTIFICATION_SERVICE) as android.app.NotificationManager)
+                .notify(System.currentTimeMillis().toInt(), notification)
         }
-
-        val intent = Intent(this, MainActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        }
-        val pendingIntent = PendingIntent.getActivity(
-            this, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
-        )
-
-        val notification = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle(title)
-            .setContentText(body)
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .build()
-
-        notificationManager.notify(System.currentTimeMillis().toInt(), notification)
-    }
-
-    companion object {
-        const val CHANNEL_ID = "rentacar_notifications"
     }
 }

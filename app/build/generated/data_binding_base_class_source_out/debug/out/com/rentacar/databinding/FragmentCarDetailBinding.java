@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
@@ -41,6 +43,38 @@ public final class FragmentCarDetailBinding implements ViewBinding {
   @NonNull
   public final ProgressBar progressBar;
 
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final RatingBar ratingBar;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final RecyclerView rvReviews;
+
   @NonNull
   public final TextView tvCarTitle;
 
@@ -69,8 +103,56 @@ public final class FragmentCarDetailBinding implements ViewBinding {
   @NonNull
   public final TextView tvLocation;
 
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final TextView tvNoReviews;
+
   @NonNull
   public final TextView tvPrice;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final TextView tvRatingValue;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final TextView tvReviewCount;
 
   /**
    * This binding is not available in all configurations.
@@ -131,12 +213,14 @@ public final class FragmentCarDetailBinding implements ViewBinding {
 
   private FragmentCarDetailBinding(@NonNull FrameLayout rootView, @NonNull MaterialButton btnBook,
       @NonNull Chip chipAvailable, @NonNull Chip chipUnavailable, @NonNull View contentGroup,
-      @NonNull ImageView ivCar, @NonNull ProgressBar progressBar, @NonNull TextView tvCarTitle,
+      @NonNull ImageView ivCar, @NonNull ProgressBar progressBar, @Nullable RatingBar ratingBar,
+      @Nullable RecyclerView rvReviews, @NonNull TextView tvCarTitle,
       @NonNull TextView tvDescription, @Nullable TextView tvFuel, @NonNull TextView tvFuelDisplay,
-      @NonNull TextView tvLocation, @NonNull TextView tvPrice, @Nullable TextView tvSeats,
-      @NonNull TextView tvSeatsDisplay, @Nullable TextView tvTransmission,
-      @NonNull TextView tvTransmissionDisplay, @Nullable TextView tvYear,
-      @NonNull TextView tvYearDisplay) {
+      @NonNull TextView tvLocation, @Nullable TextView tvNoReviews, @NonNull TextView tvPrice,
+      @Nullable TextView tvRatingValue, @Nullable TextView tvReviewCount,
+      @Nullable TextView tvSeats, @NonNull TextView tvSeatsDisplay,
+      @Nullable TextView tvTransmission, @NonNull TextView tvTransmissionDisplay,
+      @Nullable TextView tvYear, @NonNull TextView tvYearDisplay) {
     this.rootView = rootView;
     this.btnBook = btnBook;
     this.chipAvailable = chipAvailable;
@@ -144,12 +228,17 @@ public final class FragmentCarDetailBinding implements ViewBinding {
     this.contentGroup = contentGroup;
     this.ivCar = ivCar;
     this.progressBar = progressBar;
+    this.ratingBar = ratingBar;
+    this.rvReviews = rvReviews;
     this.tvCarTitle = tvCarTitle;
     this.tvDescription = tvDescription;
     this.tvFuel = tvFuel;
     this.tvFuelDisplay = tvFuelDisplay;
     this.tvLocation = tvLocation;
+    this.tvNoReviews = tvNoReviews;
     this.tvPrice = tvPrice;
+    this.tvRatingValue = tvRatingValue;
+    this.tvReviewCount = tvReviewCount;
     this.tvSeats = tvSeats;
     this.tvSeatsDisplay = tvSeatsDisplay;
     this.tvTransmission = tvTransmission;
@@ -221,6 +310,12 @@ public final class FragmentCarDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rating_bar;
+      RatingBar ratingBar = ViewBindings.findChildViewById(rootView, id);
+
+      id = R.id.rv_reviews;
+      RecyclerView rvReviews = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.tv_car_title;
       TextView tvCarTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvCarTitle == null) {
@@ -248,11 +343,20 @@ public final class FragmentCarDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_no_reviews;
+      TextView tvNoReviews = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.tv_price;
       TextView tvPrice = ViewBindings.findChildViewById(rootView, id);
       if (tvPrice == null) {
         break missingId;
       }
+
+      id = R.id.tv_rating_value;
+      TextView tvRatingValue = ViewBindings.findChildViewById(rootView, id);
+
+      id = R.id.tv_review_count;
+      TextView tvReviewCount = ViewBindings.findChildViewById(rootView, id);
 
       id = R.id.tv_seats;
       TextView tvSeats = ViewBindings.findChildViewById(rootView, id);
@@ -282,9 +386,10 @@ public final class FragmentCarDetailBinding implements ViewBinding {
       }
 
       return new FragmentCarDetailBinding((FrameLayout) rootView, btnBook, chipAvailable,
-          chipUnavailable, contentGroup, ivCar, progressBar, tvCarTitle, tvDescription, tvFuel,
-          tvFuelDisplay, tvLocation, tvPrice, tvSeats, tvSeatsDisplay, tvTransmission,
-          tvTransmissionDisplay, tvYear, tvYearDisplay);
+          chipUnavailable, contentGroup, ivCar, progressBar, ratingBar, rvReviews, tvCarTitle,
+          tvDescription, tvFuel, tvFuelDisplay, tvLocation, tvNoReviews, tvPrice, tvRatingValue,
+          tvReviewCount, tvSeats, tvSeatsDisplay, tvTransmission, tvTransmissionDisplay, tvYear,
+          tvYearDisplay);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

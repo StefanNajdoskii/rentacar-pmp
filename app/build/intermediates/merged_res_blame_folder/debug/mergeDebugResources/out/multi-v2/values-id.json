@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-71:/values-id/values-id.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-111:/values-id/values-id.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\c2012840eade26e6b89e7b5ce89e5710\\transformed\\facebook-common-16.3.0\\res\\values-id\\values-id.xml",
@@ -11,6 +11,23 @@
                         "startOffsets": "55,207,332,446,545,612,680,737,808,879,979,1076,1149,1222,1306,1409,1473,1540,1714,1793,1878,1970",
                         "endColumns": "151,124,113,98,66,67,56,70,70,99,96,72,72,83,102,63,66,173,78,84,91,132",
                         "endOffsets": "202,327,441,540,607,675,732,803,874,974,1071,1144,1217,1301,1404,1468,1535,1709,1788,1873,1965,2098"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\9182cc4b2dc74aab103bdcf56d7a2894\\transformed\\play-services-wallet-19.3.0\\res\\values-id\\values.xml",
+                    "from": {
+                        "startLines": "4,5",
+                        "startColumns": "0,0",
+                        "startOffsets": "202,259",
+                        "endColumns": "56,73",
+                        "endOffsets": "258,332"
+                    },
+                    "to": {
+                        "startLines": "24,25",
+                        "startColumns": "4,4",
+                        "startOffsets": "2103,2164",
+                        "endColumns": "60,77",
+                        "endOffsets": "2159,2237"
                     }
                 }
             ]

@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.rentacar.MainActivity
 import com.rentacar.R
 import com.rentacar.databinding.FragmentBookingBinding
 import java.text.SimpleDateFormat
@@ -25,7 +25,14 @@ class BookingFragment : Fragment() {
     private val args: BookingFragmentArgs by navArgs()
     private val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    private val pickupLocations by lazy {
+        resources.getStringArray(R.array.pickup_locations)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,7 +42,28 @@ class BookingFragment : Fragment() {
         viewModel.loadCar(args.carId)
         setupObservers()
         setupDatePickers()
+        setupLocationPicker()
         binding.btnConfirmBooking.setOnClickListener { viewModel.createBooking() }
+    }
+
+    private fun setupLocationPicker() {
+        binding.tvPickupLocation.text = getString(R.string.pickup_not_selected)
+        binding.btnSelectLocation.setOnClickListener {
+            var selected = pickupLocations.indexOf(viewModel.selectedPickupLocation)
+                .takeIf { it >= 0 } ?: 0
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.label_pickup_location)
+                .setSingleChoiceItems(pickupLocations, selected) { _, which ->
+                    selected = which
+                }
+                .setPositiveButton(R.string.action_save) { _, _ ->
+                    val location = pickupLocations[selected]
+                    viewModel.selectedPickupLocation = location
+                    binding.tvPickupLocation.text = location
+                }
+                .setNegativeButton(R.string.action_cancel, null)
+                .show()
+        }
     }
 
     private fun setupObservers() {
@@ -58,15 +86,17 @@ class BookingFragment : Fragment() {
                 is BookingUiState.Loading -> binding.progressBar.isVisible = true
                 is BookingUiState.Success -> {
                     binding.progressBar.isVisible = false
-                    Snackbar.make(binding.root, state.message, Snackbar.LENGTH_SHORT).show()
                     viewModel.resetState()
-                    // Step 1: pop bookingFragment + carDetailFragment WITHOUT saveState so that
-                    // Navigation 2.4+ multi-back-stack stores a clean [carListFragment] as the
-                    // Cars tab's saved state, not the booking screen.
-                    findNavController().popBackStack(R.id.carListFragment, false)
-                    // Step 2: switch tabs via BottomNavigationView — the only correct API for
-                    // cross-tab navigation with multi-back-stack enabled.
-                    (requireActivity() as? MainActivity)?.switchToBookingsTab()
+                    findNavController().navigate(
+                        BookingFragmentDirections.actionBookingToPayment(
+                            bookingId = state.bookingId,
+                            totalPrice = (viewModel.totalPrice.value ?: 0.0).toFloat(),
+                            carName = binding.tvCarName.text.toString(),
+                            startDate = viewModel.startDate,
+                            endDate = viewModel.endDate,
+                            pickupLocation = viewModel.selectedPickupLocation
+                        )
+                    )
                 }
                 is BookingUiState.Error -> {
                     binding.progressBar.isVisible = false

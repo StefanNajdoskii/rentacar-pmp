@@ -15,5 +15,7 @@ data class BookingEntity(
     val endDate: Long,
     val totalPrice: Double,
     val status: String,
+    val pickupLocation: String,
+    val paymentStatus: String,
     val createdAt: Long
 )

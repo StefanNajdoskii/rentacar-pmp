@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pickup_locations">
+        <item>Аеродром</item>
+        <item>Центар на градот</item>
+        <item>Северна станица</item>
+        <item>Јужна автобуска станица</item>
+        <item>Источен реон</item>
+    </string-array>
+</resources>

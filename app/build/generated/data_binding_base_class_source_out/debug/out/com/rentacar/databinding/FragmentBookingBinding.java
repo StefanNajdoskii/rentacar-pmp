@@ -29,6 +29,9 @@ public final class FragmentBookingBinding implements ViewBinding {
   public final MaterialButton btnPickDates;
 
   @NonNull
+  public final MaterialButton btnSelectLocation;
+
+  @NonNull
   public final ImageView ivCar;
 
   @NonNull
@@ -41,6 +44,9 @@ public final class FragmentBookingBinding implements ViewBinding {
   public final TextView tvEndDate;
 
   @NonNull
+  public final TextView tvPickupLocation;
+
+  @NonNull
   public final TextView tvPricePerDay;
 
   @NonNull
@@ -51,16 +57,19 @@ public final class FragmentBookingBinding implements ViewBinding {
 
   private FragmentBookingBinding(@NonNull FrameLayout rootView,
       @NonNull MaterialButton btnConfirmBooking, @NonNull MaterialButton btnPickDates,
-      @NonNull ImageView ivCar, @NonNull ProgressBar progressBar, @NonNull TextView tvCarName,
-      @NonNull TextView tvEndDate, @NonNull TextView tvPricePerDay, @NonNull TextView tvStartDate,
-      @NonNull TextView tvTotalPrice) {
+      @NonNull MaterialButton btnSelectLocation, @NonNull ImageView ivCar,
+      @NonNull ProgressBar progressBar, @NonNull TextView tvCarName, @NonNull TextView tvEndDate,
+      @NonNull TextView tvPickupLocation, @NonNull TextView tvPricePerDay,
+      @NonNull TextView tvStartDate, @NonNull TextView tvTotalPrice) {
     this.rootView = rootView;
     this.btnConfirmBooking = btnConfirmBooking;
     this.btnPickDates = btnPickDates;
+    this.btnSelectLocation = btnSelectLocation;
     this.ivCar = ivCar;
     this.progressBar = progressBar;
     this.tvCarName = tvCarName;
     this.tvEndDate = tvEndDate;
+    this.tvPickupLocation = tvPickupLocation;
     this.tvPricePerDay = tvPricePerDay;
     this.tvStartDate = tvStartDate;
     this.tvTotalPrice = tvTotalPrice;
@@ -105,6 +114,12 @@ public final class FragmentBookingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_select_location;
+      MaterialButton btnSelectLocation = ViewBindings.findChildViewById(rootView, id);
+      if (btnSelectLocation == null) {
+        break missingId;
+      }
+
       id = R.id.iv_car;
       ImageView ivCar = ViewBindings.findChildViewById(rootView, id);
       if (ivCar == null) {
@@ -129,6 +144,12 @@ public final class FragmentBookingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_pickup_location;
+      TextView tvPickupLocation = ViewBindings.findChildViewById(rootView, id);
+      if (tvPickupLocation == null) {
+        break missingId;
+      }
+
       id = R.id.tv_price_per_day;
       TextView tvPricePerDay = ViewBindings.findChildViewById(rootView, id);
       if (tvPricePerDay == null) {
@@ -148,7 +169,8 @@ public final class FragmentBookingBinding implements ViewBinding {
       }
 
       return new FragmentBookingBinding((FrameLayout) rootView, btnConfirmBooking, btnPickDates,
-          ivCar, progressBar, tvCarName, tvEndDate, tvPricePerDay, tvStartDate, tvTotalPrice);
+          btnSelectLocation, ivCar, progressBar, tvCarName, tvEndDate, tvPickupLocation,
+          tvPricePerDay, tvStartDate, tvTotalPrice);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

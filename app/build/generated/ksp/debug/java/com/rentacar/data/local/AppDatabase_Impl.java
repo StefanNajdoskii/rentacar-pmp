@@ -30,22 +30,26 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile BookingDao _bookingDao;
 
+  private volatile ReviewDao _reviewDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `cars` (`id` TEXT NOT NULL, `brand` TEXT NOT NULL, `model` TEXT NOT NULL, `year` INTEGER NOT NULL, `pricePerDay` REAL NOT NULL, `imageUrl` TEXT NOT NULL, `description` TEXT NOT NULL, `transmission` TEXT NOT NULL, `fuelType` TEXT NOT NULL, `seats` INTEGER NOT NULL, `available` INTEGER NOT NULL, `location` TEXT NOT NULL, PRIMARY KEY(`id`))");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `bookings` (`id` TEXT NOT NULL, `userId` TEXT NOT NULL, `carId` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `carImageUrl` TEXT NOT NULL, `startDate` INTEGER NOT NULL, `endDate` INTEGER NOT NULL, `totalPrice` REAL NOT NULL, `status` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `cars` (`id` TEXT NOT NULL, `brand` TEXT NOT NULL, `model` TEXT NOT NULL, `year` INTEGER NOT NULL, `pricePerDay` REAL NOT NULL, `imageUrl` TEXT NOT NULL, `description` TEXT NOT NULL, `transmission` TEXT NOT NULL, `fuelType` TEXT NOT NULL, `seats` INTEGER NOT NULL, `available` INTEGER NOT NULL, `location` TEXT NOT NULL, `carType` TEXT NOT NULL, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `bookings` (`id` TEXT NOT NULL, `userId` TEXT NOT NULL, `carId` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `carImageUrl` TEXT NOT NULL, `startDate` INTEGER NOT NULL, `endDate` INTEGER NOT NULL, `totalPrice` REAL NOT NULL, `status` TEXT NOT NULL, `pickupLocation` TEXT NOT NULL, `paymentStatus` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `reviews` (`id` TEXT NOT NULL, `bookingId` TEXT NOT NULL, `carId` TEXT NOT NULL, `userId` TEXT NOT NULL, `rating` REAL NOT NULL, `comment` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cd85f150f0a0024256b215c944e795c5')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c08748d2e2b82c3d3dff44d717ab68d9')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS `cars`");
         db.execSQL("DROP TABLE IF EXISTS `bookings`");
+        db.execSQL("DROP TABLE IF EXISTS `reviews`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -89,7 +93,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsCars = new HashMap<String, TableInfo.Column>(12);
+        final HashMap<String, TableInfo.Column> _columnsCars = new HashMap<String, TableInfo.Column>(13);
         _columnsCars.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCars.put("brand", new TableInfo.Column("brand", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCars.put("model", new TableInfo.Column("model", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -102,6 +106,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsCars.put("seats", new TableInfo.Column("seats", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCars.put("available", new TableInfo.Column("available", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCars.put("location", new TableInfo.Column("location", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCars.put("carType", new TableInfo.Column("carType", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysCars = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesCars = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoCars = new TableInfo("cars", _columnsCars, _foreignKeysCars, _indicesCars);
@@ -111,7 +116,7 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoCars + "\n"
                   + " Found:\n" + _existingCars);
         }
-        final HashMap<String, TableInfo.Column> _columnsBookings = new HashMap<String, TableInfo.Column>(11);
+        final HashMap<String, TableInfo.Column> _columnsBookings = new HashMap<String, TableInfo.Column>(13);
         _columnsBookings.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("userId", new TableInfo.Column("userId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("carId", new TableInfo.Column("carId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -122,6 +127,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsBookings.put("endDate", new TableInfo.Column("endDate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("totalPrice", new TableInfo.Column("totalPrice", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBookings.put("pickupLocation", new TableInfo.Column("pickupLocation", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBookings.put("paymentStatus", new TableInfo.Column("paymentStatus", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysBookings = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesBookings = new HashSet<TableInfo.Index>(0);
@@ -132,9 +139,28 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoBookings + "\n"
                   + " Found:\n" + _existingBookings);
         }
+        final HashMap<String, TableInfo.Column> _columnsReviews = new HashMap<String, TableInfo.Column>(9);
+        _columnsReviews.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("bookingId", new TableInfo.Column("bookingId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("carId", new TableInfo.Column("carId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("userId", new TableInfo.Column("userId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("rating", new TableInfo.Column("rating", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("comment", new TableInfo.Column("comment", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("carBrand", new TableInfo.Column("carBrand", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("carModel", new TableInfo.Column("carModel", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsReviews.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysReviews = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesReviews = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoReviews = new TableInfo("reviews", _columnsReviews, _foreignKeysReviews, _indicesReviews);
+        final TableInfo _existingReviews = TableInfo.read(db, "reviews");
+        if (!_infoReviews.equals(_existingReviews)) {
+          return new RoomOpenHelper.ValidationResult(false, "reviews(com.rentacar.data.local.ReviewEntity).\n"
+                  + " Expected:\n" + _infoReviews + "\n"
+                  + " Found:\n" + _existingReviews);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "cd85f150f0a0024256b215c944e795c5", "1212cf5c82b96623d89af3d4e577f631");
+    }, "c08748d2e2b82c3d3dff44d717ab68d9", "31d828fd40518d9f432b534d35496507");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -145,7 +171,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "cars","bookings");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "cars","bookings","reviews");
   }
 
   @Override
@@ -156,6 +182,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `cars`");
       _db.execSQL("DELETE FROM `bookings`");
+      _db.execSQL("DELETE FROM `reviews`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -172,6 +199,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(CarDao.class, CarDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(BookingDao.class, BookingDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(ReviewDao.class, ReviewDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -214,6 +242,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _bookingDao = new BookingDao_Impl(this);
         }
         return _bookingDao;
+      }
+    }
+  }
+
+  @Override
+  public ReviewDao reviewDao() {
+    if (_reviewDao != null) {
+      return _reviewDao;
+    } else {
+      synchronized(this) {
+        if(_reviewDao == null) {
+          _reviewDao = new ReviewDao_Impl(this);
+        }
+        return _reviewDao;
       }
     }
   }

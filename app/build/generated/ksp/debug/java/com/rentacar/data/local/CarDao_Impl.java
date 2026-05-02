@@ -46,7 +46,7 @@ public final class CarDao_Impl implements CarDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `cars` (`id`,`brand`,`model`,`year`,`pricePerDay`,`imageUrl`,`description`,`transmission`,`fuelType`,`seats`,`available`,`location`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `cars` (`id`,`brand`,`model`,`year`,`pricePerDay`,`imageUrl`,`description`,`transmission`,`fuelType`,`seats`,`available`,`location`,`carType`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -65,6 +65,7 @@ public final class CarDao_Impl implements CarDao {
         final int _tmp = entity.getAvailable() ? 1 : 0;
         statement.bindLong(11, _tmp);
         statement.bindString(12, entity.getLocation());
+        statement.bindString(13, entity.getCarType());
       }
     };
     this.__deletionAdapterOfCarEntity = new EntityDeletionOrUpdateAdapter<CarEntity>(__db) {
@@ -190,6 +191,7 @@ public final class CarDao_Impl implements CarDao {
           final int _cursorIndexOfSeats = CursorUtil.getColumnIndexOrThrow(_cursor, "seats");
           final int _cursorIndexOfAvailable = CursorUtil.getColumnIndexOrThrow(_cursor, "available");
           final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+          final int _cursorIndexOfCarType = CursorUtil.getColumnIndexOrThrow(_cursor, "carType");
           final List<CarEntity> _result = new ArrayList<CarEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final CarEntity _item;
@@ -219,7 +221,9 @@ public final class CarDao_Impl implements CarDao {
             _tmpAvailable = _tmp != 0;
             final String _tmpLocation;
             _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
-            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation);
+            final String _tmpCarType;
+            _tmpCarType = _cursor.getString(_cursorIndexOfCarType);
+            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation,_tmpCarType);
             _result.add(_item);
           }
           return _result;
@@ -257,6 +261,7 @@ public final class CarDao_Impl implements CarDao {
           final int _cursorIndexOfSeats = CursorUtil.getColumnIndexOrThrow(_cursor, "seats");
           final int _cursorIndexOfAvailable = CursorUtil.getColumnIndexOrThrow(_cursor, "available");
           final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+          final int _cursorIndexOfCarType = CursorUtil.getColumnIndexOrThrow(_cursor, "carType");
           final List<CarEntity> _result = new ArrayList<CarEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final CarEntity _item;
@@ -286,7 +291,9 @@ public final class CarDao_Impl implements CarDao {
             _tmpAvailable = _tmp != 0;
             final String _tmpLocation;
             _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
-            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation);
+            final String _tmpCarType;
+            _tmpCarType = _cursor.getString(_cursorIndexOfCarType);
+            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation,_tmpCarType);
             _result.add(_item);
           }
           return _result;
@@ -327,6 +334,7 @@ public final class CarDao_Impl implements CarDao {
           final int _cursorIndexOfSeats = CursorUtil.getColumnIndexOrThrow(_cursor, "seats");
           final int _cursorIndexOfAvailable = CursorUtil.getColumnIndexOrThrow(_cursor, "available");
           final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+          final int _cursorIndexOfCarType = CursorUtil.getColumnIndexOrThrow(_cursor, "carType");
           final CarEntity _result;
           if (_cursor.moveToFirst()) {
             final String _tmpId;
@@ -355,7 +363,9 @@ public final class CarDao_Impl implements CarDao {
             _tmpAvailable = _tmp != 0;
             final String _tmpLocation;
             _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
-            _result = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation);
+            final String _tmpCarType;
+            _tmpCarType = _cursor.getString(_cursorIndexOfCarType);
+            _result = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation,_tmpCarType);
           } else {
             _result = null;
           }
@@ -394,6 +404,7 @@ public final class CarDao_Impl implements CarDao {
           final int _cursorIndexOfSeats = CursorUtil.getColumnIndexOrThrow(_cursor, "seats");
           final int _cursorIndexOfAvailable = CursorUtil.getColumnIndexOrThrow(_cursor, "available");
           final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+          final int _cursorIndexOfCarType = CursorUtil.getColumnIndexOrThrow(_cursor, "carType");
           final List<CarEntity> _result = new ArrayList<CarEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final CarEntity _item;
@@ -423,7 +434,9 @@ public final class CarDao_Impl implements CarDao {
             _tmpAvailable = _tmp != 0;
             final String _tmpLocation;
             _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
-            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation);
+            final String _tmpCarType;
+            _tmpCarType = _cursor.getString(_cursorIndexOfCarType);
+            _item = new CarEntity(_tmpId,_tmpBrand,_tmpModel,_tmpYear,_tmpPricePerDay,_tmpImageUrl,_tmpDescription,_tmpTransmission,_tmpFuelType,_tmpSeats,_tmpAvailable,_tmpLocation,_tmpCarType);
             _result.add(_item);
           }
           return _result;
@@ -457,6 +470,32 @@ public final class CarDao_Impl implements CarDao {
             _result = _tmp;
           } else {
             _result = 0;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getDistinctBrands(final Continuation<? super List<String>> $completion) {
+    final String _sql = "SELECT DISTINCT brand FROM cars ORDER BY brand ASC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<String>>() {
+      @Override
+      @NonNull
+      public List<String> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final List<String> _result = new ArrayList<String>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final String _item;
+            _item = _cursor.getString(0);
+            _result.add(_item);
           }
           return _result;
         } finally {

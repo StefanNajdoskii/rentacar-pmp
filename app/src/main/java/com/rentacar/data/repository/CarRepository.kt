@@ -42,47 +42,35 @@ class CarRepository(
     }
 
     private fun localSampleCars(): List<CarEntity> = listOf(
-        CarEntity(
-            id = "sample_car_1", brand = "Toyota", model = "Corolla", year = 2022,
-            pricePerDay = 35.0,
+        CarEntity(id = "sample_car_1", brand = "Toyota", model = "Corolla", year = 2022,
+            pricePerDay = 35.0, carType = "Sedan",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2019_Toyota_Corolla_sedan_%28facelift%2C_white%29%2C_front_8.28.19.jpg/1280px-2019_Toyota_Corolla_sedan_%28facelift%2C_white%29%2C_front_8.28.19.jpg",
             description = "Reliable compact sedan with excellent fuel economy.",
-            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje"
-        ),
-        CarEntity(
-            id = "sample_car_2", brand = "Volkswagen", model = "Golf", year = 2021,
-            pricePerDay = 40.0,
+            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje"),
+        CarEntity(id = "sample_car_2", brand = "Volkswagen", model = "Golf", year = 2021,
+            pricePerDay = 40.0, carType = "Hatchback",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/2020_Volkswagen_Golf_Style_2.0_TDI_150_Front.jpg/1280px-2020_Volkswagen_Golf_Style_2.0_TDI_150_Front.jpg",
             description = "Popular European hatchback with sporty handling.",
-            transmission = "Manual", fuelType = "Diesel", seats = 5, available = true, location = "Ohrid"
-        ),
-        CarEntity(
-            id = "sample_car_3", brand = "BMW", model = "3 Series", year = 2023,
-            pricePerDay = 80.0,
+            transmission = "Manual", fuelType = "Diesel", seats = 5, available = true, location = "Ohrid"),
+        CarEntity(id = "sample_car_3", brand = "BMW", model = "3 Series", year = 2023,
+            pricePerDay = 80.0, carType = "Sedan",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/2019_BMW_330i_M_Sport_%28G20%29_front_8.24.19.jpg/1280px-2019_BMW_330i_M_Sport_%28G20%29_front_8.24.19.jpg",
             description = "Luxury sports sedan with premium features.",
-            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje"
-        ),
-        CarEntity(
-            id = "sample_car_4", brand = "Tesla", model = "Model 3", year = 2023,
-            pricePerDay = 90.0,
+            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje"),
+        CarEntity(id = "sample_car_4", brand = "Tesla", model = "Model 3", year = 2023,
+            pricePerDay = 90.0, carType = "Electric",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/2019_Tesla_Model_3_Performance_AWD_%28facelifted%29%2C_front_8.27.19.jpg/1280px-2019_Tesla_Model_3_Performance_AWD_%28facelifted%29%2C_front_8.27.19.jpg",
             description = "All-electric sedan with Autopilot and long range.",
-            transmission = "Automatic", fuelType = "Electric", seats = 5, available = true, location = "Skopje"
-        ),
-        CarEntity(
-            id = "sample_car_5", brand = "Ford", model = "Mustang", year = 2022,
-            pricePerDay = 75.0,
+            transmission = "Automatic", fuelType = "Electric", seats = 5, available = true, location = "Skopje"),
+        CarEntity(id = "sample_car_5", brand = "Ford", model = "Mustang", year = 2022,
+            pricePerDay = 75.0, carType = "Coupe",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/2019_Ford_Mustang_GT_Fastback%2C_front_8.25.19.jpg/1280px-2019_Ford_Mustang_GT_Fastback%2C_front_8.25.19.jpg",
             description = "Iconic American muscle car for an unforgettable drive.",
-            transmission = "Manual", fuelType = "Petrol", seats = 4, available = true, location = "Bitola"
-        ),
-        CarEntity(
-            id = "sample_car_6", brand = "Mercedes-Benz", model = "C-Class", year = 2023,
-            pricePerDay = 95.0,
+            transmission = "Manual", fuelType = "Petrol", seats = 4, available = true, location = "Bitola"),
+        CarEntity(id = "sample_car_6", brand = "Mercedes-Benz", model = "C-Class", year = 2023,
+            pricePerDay = 95.0, carType = "Sedan",
             imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2022_Mercedes-Benz_C_200_Avantgarde_%28W206%29_front_8.24.22.jpg/1280px-2022_Mercedes-Benz_C_200_Avantgarde_%28W206%29_front_8.24.22.jpg",
             description = "Elegant luxury sedan with cutting-edge technology.",
-            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje"
-        )
+            transmission = "Automatic", fuelType = "Petrol", seats = 5, available = true, location = "Skopje")
     )
 }
