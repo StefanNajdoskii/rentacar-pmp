@@ -16,5 +16,6 @@ data class CarEntity(
     val fuelType: String,
     val seats: Int,
     val available: Boolean,
-    val location: String
+    val location: String,
+    val carType: String = "Sedan"
 )

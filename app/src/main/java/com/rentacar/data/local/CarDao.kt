@@ -20,6 +20,9 @@ interface CarDao {
     @Query("SELECT COUNT(*) FROM cars")
     suspend fun getCarCount(): Int
 
+    @Query("SELECT DISTINCT brand FROM cars ORDER BY brand ASC")
+    suspend fun getDistinctBrands(): List<String>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCars(cars: List<CarEntity>)
 

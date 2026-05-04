@@ -8,9 +8,10 @@ data class Car(
     val pricePerDay: Double = 0.0,
     val imageUrl: String = "",
     val description: String = "",
-    val transmission: String = "",   // "Automatic" / "Manual"
-    val fuelType: String = "",       // "Petrol" / "Diesel" / "Electric"
+    val transmission: String = "",  // "Automatic" / "Manual"
+    val fuelType: String = "",      // "Petrol" / "Diesel" / "Electric"
     val seats: Int = 5,
     val available: Boolean = true,
-    val location: String = ""
+    val location: String = "",
+    val carType: String = "Sedan"   // Sedan / SUV / Hatchback / Coupe / Electric
 )

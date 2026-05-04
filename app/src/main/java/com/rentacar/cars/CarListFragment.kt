@@ -23,7 +23,10 @@ class CarListFragment : Fragment() {
     private val viewModel: CarListViewModel by viewModels()
     private lateinit var carAdapter: CarAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentCarListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,6 +35,7 @@ class CarListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupSearchView()
+        setupFilterButton()
         setupObservers()
         setupSwipeRefresh()
 
@@ -69,6 +73,13 @@ class CarListFragment : Fragment() {
         })
     }
 
+    private fun setupFilterButton() {
+        binding.btnFilter?.setOnClickListener {
+            FilterBottomSheetFragment()
+                .show(childFragmentManager, FilterBottomSheetFragment.TAG)
+        }
+    }
+
     private fun setupObservers() {
         viewModel.cars.observe(viewLifecycleOwner) { cars ->
             carAdapter.submitList(cars)
@@ -84,6 +95,10 @@ class CarListFragment : Fragment() {
                     .show()
                 viewModel.clearError()
             }
+        }
+        // Show active filter count on the filter button label
+        viewModel.activeFilterCount.observe(viewLifecycleOwner) { count ->
+            binding.btnFilter?.text = if (count > 0) count.toString() else ""
         }
     }
 

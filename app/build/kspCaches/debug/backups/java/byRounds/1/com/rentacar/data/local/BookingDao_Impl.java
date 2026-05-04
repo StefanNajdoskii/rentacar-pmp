@@ -47,7 +47,7 @@ public final class BookingDao_Impl implements BookingDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `bookings` (`id`,`userId`,`carId`,`carBrand`,`carModel`,`carImageUrl`,`startDate`,`endDate`,`totalPrice`,`status`,`createdAt`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `bookings` (`id`,`userId`,`carId`,`carBrand`,`carModel`,`carImageUrl`,`startDate`,`endDate`,`totalPrice`,`status`,`pickupLocation`,`paymentStatus`,`createdAt`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -63,7 +63,9 @@ public final class BookingDao_Impl implements BookingDao {
         statement.bindLong(8, entity.getEndDate());
         statement.bindDouble(9, entity.getTotalPrice());
         statement.bindString(10, entity.getStatus());
-        statement.bindLong(11, entity.getCreatedAt());
+        statement.bindString(11, entity.getPickupLocation());
+        statement.bindString(12, entity.getPaymentStatus());
+        statement.bindLong(13, entity.getCreatedAt());
       }
     };
     this.__deletionAdapterOfBookingEntity = new EntityDeletionOrUpdateAdapter<BookingEntity>(__db) {
@@ -83,7 +85,7 @@ public final class BookingDao_Impl implements BookingDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `bookings` SET `id` = ?,`userId` = ?,`carId` = ?,`carBrand` = ?,`carModel` = ?,`carImageUrl` = ?,`startDate` = ?,`endDate` = ?,`totalPrice` = ?,`status` = ?,`createdAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `bookings` SET `id` = ?,`userId` = ?,`carId` = ?,`carBrand` = ?,`carModel` = ?,`carImageUrl` = ?,`startDate` = ?,`endDate` = ?,`totalPrice` = ?,`status` = ?,`pickupLocation` = ?,`paymentStatus` = ?,`createdAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -99,8 +101,10 @@ public final class BookingDao_Impl implements BookingDao {
         statement.bindLong(8, entity.getEndDate());
         statement.bindDouble(9, entity.getTotalPrice());
         statement.bindString(10, entity.getStatus());
-        statement.bindLong(11, entity.getCreatedAt());
-        statement.bindString(12, entity.getId());
+        statement.bindString(11, entity.getPickupLocation());
+        statement.bindString(12, entity.getPaymentStatus());
+        statement.bindLong(13, entity.getCreatedAt());
+        statement.bindString(14, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteBookingsForUser = new SharedSQLiteStatement(__db) {
@@ -237,6 +241,8 @@ public final class BookingDao_Impl implements BookingDao {
           final int _cursorIndexOfEndDate = CursorUtil.getColumnIndexOrThrow(_cursor, "endDate");
           final int _cursorIndexOfTotalPrice = CursorUtil.getColumnIndexOrThrow(_cursor, "totalPrice");
           final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfPickupLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "pickupLocation");
+          final int _cursorIndexOfPaymentStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentStatus");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final List<BookingEntity> _result = new ArrayList<BookingEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
@@ -261,9 +267,13 @@ public final class BookingDao_Impl implements BookingDao {
             _tmpTotalPrice = _cursor.getDouble(_cursorIndexOfTotalPrice);
             final String _tmpStatus;
             _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+            final String _tmpPickupLocation;
+            _tmpPickupLocation = _cursor.getString(_cursorIndexOfPickupLocation);
+            final String _tmpPaymentStatus;
+            _tmpPaymentStatus = _cursor.getString(_cursorIndexOfPaymentStatus);
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpCreatedAt);
+            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -303,6 +313,8 @@ public final class BookingDao_Impl implements BookingDao {
           final int _cursorIndexOfEndDate = CursorUtil.getColumnIndexOrThrow(_cursor, "endDate");
           final int _cursorIndexOfTotalPrice = CursorUtil.getColumnIndexOrThrow(_cursor, "totalPrice");
           final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfPickupLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "pickupLocation");
+          final int _cursorIndexOfPaymentStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentStatus");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final BookingEntity _result;
           if (_cursor.moveToFirst()) {
@@ -326,9 +338,13 @@ public final class BookingDao_Impl implements BookingDao {
             _tmpTotalPrice = _cursor.getDouble(_cursorIndexOfTotalPrice);
             final String _tmpStatus;
             _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+            final String _tmpPickupLocation;
+            _tmpPickupLocation = _cursor.getString(_cursorIndexOfPickupLocation);
+            final String _tmpPaymentStatus;
+            _tmpPaymentStatus = _cursor.getString(_cursorIndexOfPaymentStatus);
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _result = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpCreatedAt);
+            _result = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt);
           } else {
             _result = null;
           }

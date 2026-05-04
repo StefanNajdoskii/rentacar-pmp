@@ -7,25 +7,40 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.rentacar.R
+import com.rentacar.adapters.ReviewAdapter
 import com.rentacar.databinding.FragmentCarDetailBinding
+
 
 class CarDetailFragment : Fragment() {
     private var _binding: FragmentCarDetailBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CarDetailViewModel by viewModels()
     private val args: CarDetailFragmentArgs by navArgs()
+    private lateinit var reviewAdapter: ReviewAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentCarDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupReviewsRecyclerView()
         viewModel.loadCar(args.carId)
         setupObservers()
+    }
+
+    private fun setupReviewsRecyclerView() {
+        reviewAdapter = ReviewAdapter()
+        binding.rvReviews?.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvReviews?.adapter = reviewAdapter
+        binding.rvReviews?.isNestedScrollingEnabled = false
     }
 
     private fun setupObservers() {
@@ -62,6 +77,24 @@ class CarDetailFragment : Fragment() {
                     )
                 }
             }
+        }
+
+        viewModel.averageRating.observe(viewLifecycleOwner) { avg ->
+            binding.ratingBar?.rating = avg
+            binding.tvRatingValue?.text = if (avg > 0f) String.format("%.1f", avg)
+                                          else getString(R.string.no_rating_yet)
+        }
+
+        viewModel.reviewCount.observe(viewLifecycleOwner) { count ->
+            binding.tvReviewCount?.text = resources.getQuantityString(
+                R.plurals.review_count, count, count
+            )
+        }
+
+        viewModel.reviews.observe(viewLifecycleOwner) { reviews ->
+            reviewAdapter.submitList(reviews)
+            binding.tvNoReviews?.isVisible = reviews.isEmpty()
+            binding.rvReviews?.isVisible = reviews.isNotEmpty()
         }
     }
 

@@ -36,13 +36,48 @@
         <argument
             android:name="carId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_booking_to_payment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.rentacar.payment.PaymentFragment"
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="bookingId"
+            app:argType="string" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="carName"
+            app:argType="string" />
+        <argument
+            android:name="startDate"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="endDate"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="pickupLocation"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
     <fragment
         android:id="@+id/bookingHistoryFragment"
         android:name="com.rentacar.booking.BookingHistoryFragment"
         android:label="@string/title_bookings"
-        tools:layout="@layout/fragment_booking_history" />
+        tools:layout="@layout/fragment_booking_history">
+        <action
+            android:id="@+id/action_bookingHistory_to_payment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"

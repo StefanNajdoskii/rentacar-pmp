@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:paddingBottom="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_title"
+            android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp" />
+
+        <!-- Price range -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_price_range"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/slider_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:valueFrom="0"
+            android:valueTo="500"
+            android:stepSize="10"
+            app:labelBehavior="withinBounds" />
+
+        <!-- Brand -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_brand"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:layout_marginTop="12dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/acv_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Car type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_car_type"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:layout_marginTop="12dp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_car_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:singleSelection="true"
+            app:selectionRequired="false">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_type_sedan" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_type_suv" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_type_hatchback" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_type_coupe" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_type_electric" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- Year range -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_year_range"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:layout_marginTop="12dp" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/slider_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:valueFrom="2000"
+            android:valueTo="2025"
+            android:stepSize="1"
+            app:labelBehavior="withinBounds" />
+
+        <!-- Transmission -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_transmission"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:layout_marginTop="12dp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_transmission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:singleSelection="true"
+            app:selectionRequired="false">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission_automatic" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission_manual" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_reset"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="@string/filter_reset" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_apply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/filter_apply" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

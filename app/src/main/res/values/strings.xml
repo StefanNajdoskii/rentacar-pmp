@@ -10,6 +10,7 @@
     <string name="title_bookings">My Bookings</string>
     <string name="title_profile">Profile</string>
     <string name="title_register">Create Account</string>
+    <string name="title_payment">Payment</string>
 
     <!-- Hints -->
     <string name="hint_email">Email address</string>
@@ -31,6 +32,9 @@
     <string name="action_cancel">Cancel</string>
     <string name="action_sign_out">Sign Out</string>
     <string name="action_update_profile">Update Profile</string>
+    <string name="action_rate">Rate</string>
+    <string name="action_select_location">Select Pickup Location</string>
+    <string name="action_pay_now">PAY NOW</string>
 
     <!-- Labels -->
     <string name="label_year">Year</string>
@@ -42,6 +46,9 @@
     <string name="label_rental_period">Rental Period</string>
     <string name="label_from">From</string>
     <string name="label_to">To</string>
+    <string name="label_pickup_location">Pickup Location</string>
+    <string name="label_pickup_location_value">📍 %s</string>
+    <string name="label_reviews">Reviews</string>
 
     <!-- Status -->
     <string name="available">Available</string>
@@ -55,6 +62,9 @@
     <!-- Empty states -->
     <string name="no_cars_available">No cars available</string>
     <string name="no_bookings">No bookings yet</string>
+    <string name="no_reviews_yet">No reviews yet. Be the first to review!</string>
+    <string name="no_rating_yet">No rating</string>
+    <string name="pickup_not_selected">No location selected</string>
 
     <!-- Dialog -->
     <string name="cancel_booking">Cancel Booking</string>
@@ -93,13 +103,61 @@
 
     <!-- Accessibility -->
     <string name="cd_car_image">Car image</string>
+    <string name="filter_button_desc">Filter cars</string>
 
     <!-- Notifications -->
     <string name="notification_channel_name">Rent-a-Car Notifications</string>
+    <string name="notification_channel_bookings">Booking Confirmations</string>
+    <string name="notification_channel_reminders">Return Reminders</string>
+    <string name="notification_booking_confirmed_title">Booking Confirmed!</string>
+    <string name="notification_booking_confirmed_body">Your %s is reserved from %s. Enjoy the ride!</string>
+    <string name="notification_reminder_title">Return Reminder</string>
+    <string name="notification_reminder_body">Don\'t forget — your %s is due back on %s. Safe travels!</string>
 
     <!-- Firebase / 3rd party (replace with real values) -->
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
     <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
     <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
     <string name="fb_login_protocol_scheme">fbYOUR_FACEBOOK_APP_ID</string>
+
+    <!-- Search &amp; Filters -->
+    <string name="filter_title">Filter Cars</string>
+    <string name="filter_price_range">Price Range (€/day)</string>
+    <string name="filter_brand">Brand</string>
+    <string name="filter_car_type">Car Type</string>
+    <string name="filter_year_range">Year Range</string>
+    <string name="filter_apply">Apply</string>
+    <string name="filter_reset">Reset</string>
+    <string name="filter_all_brands">All Brands</string>
+    <string name="car_type_sedan">Sedan</string>
+    <string name="car_type_suv">SUV</string>
+    <string name="car_type_hatchback">Hatchback</string>
+    <string name="car_type_coupe">Coupe</string>
+    <string name="car_type_electric">Electric</string>
+    <string name="transmission_automatic">Automatic</string>
+    <string name="transmission_manual">Manual</string>
+
+    <!-- Ratings &amp; Reviews -->
+    <string name="rating_title">Rate your experience with %s</string>
+    <string name="rating_comment_hint">Share your experience (optional)</string>
+    <string name="rating_submit">Submit Review</string>
+    <string name="rating_select_stars">Please select a star rating</string>
+    <string name="rating_submitted">Thank you for your review!</string>
+    <string name="review_no_comment">No comment provided</string>
+
+    <!-- Payment -->
+    <string name="payment_order_summary">Order Summary</string>
+    <string name="payment_card_details">Card Details</string>
+    <string name="payment_card_number">Card Number</string>
+    <string name="payment_expiry">MM/YY</string>
+    <string name="payment_cvc">CVC</string>
+    <string name="payment_pay_now">Pay Now</string>
+    <string name="payment_test_hint">Test mode — use card 4242 4242 4242 4242, any future date, any CVC</string>
+    <string name="payment_success_title">Payment Successful!</string>
+    <string name="payment_success_detail">Charged to %s ending in %s</string>
+    <string name="payment_done">View My Bookings</string>
+    <string name="payment_status_paid">Paid ✓</string>
+    <string name="payment_status_pending">Payment Pending</string>
+    <string name="payment_status_failed">Payment Failed</string>
+    <string name="error_not_logged_in">You must be logged in to complete payment</string>
 </resources>

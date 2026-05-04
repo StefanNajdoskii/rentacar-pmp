@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.button.MaterialButton;
 import com.rentacar.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -21,6 +22,22 @@ import java.lang.String;
 public final class FragmentCarListBinding implements ViewBinding {
   @NonNull
   private final LinearLayout rootView;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final MaterialButton btnFilter;
 
   @NonNull
   public final RecyclerView recyclerView;
@@ -34,10 +51,11 @@ public final class FragmentCarListBinding implements ViewBinding {
   @NonNull
   public final TextView tvEmpty;
 
-  private FragmentCarListBinding(@NonNull LinearLayout rootView, @NonNull RecyclerView recyclerView,
-      @NonNull SearchView searchView, @NonNull SwipeRefreshLayout swipeRefresh,
-      @NonNull TextView tvEmpty) {
+  private FragmentCarListBinding(@NonNull LinearLayout rootView, @Nullable MaterialButton btnFilter,
+      @NonNull RecyclerView recyclerView, @NonNull SearchView searchView,
+      @NonNull SwipeRefreshLayout swipeRefresh, @NonNull TextView tvEmpty) {
     this.rootView = rootView;
+    this.btnFilter = btnFilter;
     this.recyclerView = recyclerView;
     this.searchView = searchView;
     this.swipeRefresh = swipeRefresh;
@@ -71,6 +89,9 @@ public final class FragmentCarListBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_filter;
+      MaterialButton btnFilter = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.recycler_view;
       RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
       if (recyclerView == null) {
@@ -95,8 +116,8 @@ public final class FragmentCarListBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentCarListBinding((LinearLayout) rootView, recyclerView, searchView,
-          swipeRefresh, tvEmpty);
+      return new FragmentCarListBinding((LinearLayout) rootView, btnFilter, recyclerView,
+          searchView, swipeRefresh, tvEmpty);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

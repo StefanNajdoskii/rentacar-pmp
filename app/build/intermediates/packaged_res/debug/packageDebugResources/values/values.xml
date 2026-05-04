@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="pickup_locations">
+        <item>City Center</item>
+        <item>North Station</item>
+        <item>Bus Station</item>
+        <item>East District</item>
+    </string-array>
+    <array name="price_slider_defaults">
+        <item>0</item>
+        <item>500</item>
+    </array>
+    <array name="year_slider_defaults">
+        <item>2000</item>
+        <item>2025</item>
+    </array>
     <color name="background">#F5F5F5</color>
     <color name="chip_available_bg">#E8F5E9</color>
     <color name="chip_available_text">#2E7D32</color>
@@ -18,6 +32,10 @@
     <color name="status_confirmed">#2E7D32</color>
     <color name="status_pending">#E65100</color>
     <color name="surface">#FFFFFF</color>
+    <plurals name="review_count">
+        <item quantity="one">(%d review)</item>
+        <item quantity="other">(%d reviews)</item>
+    </plurals>
     <string name="action_book_now">Book Now</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_confirm_booking">Confirm Booking</string>
@@ -26,9 +44,12 @@
     <string name="action_facebook">Facebook</string>
     <string name="action_google">Google</string>
     <string name="action_login">Sign In</string>
+    <string name="action_pay_now">PAY NOW</string>
+    <string name="action_rate">Rate</string>
     <string name="action_register">Create Account</string>
     <string name="action_save">Save</string>
     <string name="action_select_dates">Select Rental Dates</string>
+    <string name="action_select_location">Select Pickup Location</string>
     <string name="action_sign_out">Sign Out</string>
     <string name="action_skip">Skip</string>
     <string name="action_update_profile">Update Profile</string>
@@ -37,6 +58,11 @@
     <string name="available">Available</string>
     <string name="cancel_booking">Cancel Booking</string>
     <string name="cancel_booking_confirm">Are you sure you want to cancel this booking?</string>
+    <string name="car_type_coupe">Coupe</string>
+    <string name="car_type_electric">Electric</string>
+    <string name="car_type_hatchback">Hatchback</string>
+    <string name="car_type_sedan">Sedan</string>
+    <string name="car_type_suv">SUV</string>
     <string name="cd_car_image">Car image</string>
     <string name="com.google.firebase.crashlytics.mapping_file_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
@@ -47,12 +73,22 @@
     <string name="error_google_login">Google sign-in failed. Please try a different sign-in method.</string>
     <string name="error_google_not_available">Google sign-in is not available on this device.</string>
     <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_not_logged_in">You must be logged in to complete payment</string>
     <string name="error_password_length">Password must be at least 6 characters</string>
     <string name="error_password_required">Password is required</string>
     <string name="error_passwords_mismatch">Passwords do not match</string>
     <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
     <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
     <string name="fb_login_protocol_scheme">fbYOUR_FACEBOOK_APP_ID</string>
+    <string name="filter_all_brands">All Brands</string>
+    <string name="filter_apply">Apply</string>
+    <string name="filter_brand">Brand</string>
+    <string name="filter_button_desc">Filter cars</string>
+    <string name="filter_car_type">Car Type</string>
+    <string name="filter_price_range">Price Range (€/day)</string>
+    <string name="filter_reset">Reset</string>
+    <string name="filter_title">Filter Cars</string>
+    <string name="filter_year_range">Year Range</string>
     <string name="gcm_defaultSenderId" translatable="false">1090009769528</string>
     <string name="google_api_key" translatable="false">AIzaSyD2AEXEJOKAIPG6Uk1WusAzpRp7ORmTXpQ</string>
     <string name="google_app_id" translatable="false">1:1090009769528:android:fccdd86350b6f5429ce8cd</string>
@@ -70,7 +106,10 @@
     <string name="label_fuel">Fuel Type</string>
     <string name="label_language">Language</string>
     <string name="label_location">Location</string>
+    <string name="label_pickup_location">Pickup Location</string>
+    <string name="label_pickup_location_value">📍 %s</string>
     <string name="label_rental_period">Rental Period</string>
+    <string name="label_reviews">Reviews</string>
     <string name="label_seats">Seats</string>
     <string name="label_to">To</string>
     <string name="label_transmission">Transmission</string>
@@ -81,19 +120,50 @@
     <string name="no_bookings">No bookings yet</string>
     <string name="no_cars_available">No cars available</string>
     <string name="no_name_set">No name set</string>
+    <string name="no_rating_yet">No rating</string>
+    <string name="no_reviews_yet">No reviews yet. Be the first to review!</string>
+    <string name="notification_booking_confirmed_body">Your %s is reserved from %s. Enjoy the ride!</string>
+    <string name="notification_booking_confirmed_title">Booking Confirmed!</string>
+    <string name="notification_channel_bookings">Booking Confirmations</string>
     <string name="notification_channel_name">Rent-a-Car Notifications</string>
+    <string name="notification_channel_reminders">Return Reminders</string>
+    <string name="notification_reminder_body">Don\'t forget — your %s is due back on %s. Safe travels!</string>
+    <string name="notification_reminder_title">Return Reminder</string>
     <string name="or_continue_with">— or continue with —</string>
+    <string name="payment_card_details">Card Details</string>
+    <string name="payment_card_number">Card Number</string>
+    <string name="payment_cvc">CVC</string>
+    <string name="payment_done">View My Bookings</string>
+    <string name="payment_expiry">MM/YY</string>
+    <string name="payment_order_summary">Order Summary</string>
+    <string name="payment_pay_now">Pay Now</string>
+    <string name="payment_status_failed">Payment Failed</string>
+    <string name="payment_status_paid">Paid ✓</string>
+    <string name="payment_status_pending">Payment Pending</string>
+    <string name="payment_success_detail">Charged to %s ending in %s</string>
+    <string name="payment_success_title">Payment Successful!</string>
+    <string name="payment_test_hint">Test mode — use card 4242 4242 4242 4242, any future date, any CVC</string>
+    <string name="pickup_not_selected">No location selected</string>
     <string name="placeholder_date">—</string>
     <string name="price_per_day">€%.2f / day</string>
     <string name="project_id" translatable="false">rentacar-7c2ae</string>
+    <string name="rating_comment_hint">Share your experience (optional)</string>
+    <string name="rating_select_stars">Please select a star rating</string>
+    <string name="rating_submit">Submit Review</string>
+    <string name="rating_submitted">Thank you for your review!</string>
+    <string name="rating_title">Rate your experience with %s</string>
+    <string name="review_no_comment">No comment provided</string>
     <string name="select_rental_dates">Select Rental Dates</string>
     <string name="title_booking">Book Car</string>
     <string name="title_bookings">My Bookings</string>
     <string name="title_car_detail">Car Details</string>
     <string name="title_cars">Cars</string>
+    <string name="title_payment">Payment</string>
     <string name="title_profile">Profile</string>
     <string name="title_register">Create Account</string>
     <string name="total_price">Total: €%.2f</string>
+    <string name="transmission_automatic">Automatic</string>
+    <string name="transmission_manual">Manual</string>
     <string name="unavailable">Unavailable</string>
     <string name="yes">Yes</string>
     <style name="Theme.RentaCar" parent="Theme.Material3.DayNight.NoActionBar">
@@ -120,4 +190,11 @@
         <item name="colorError">@color/error</item>
     </style>
     <style name="Theme.RentaCar.NoActionBar" parent="Theme.RentaCar"/>
+    <style name="Theme.SplashScreen" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+    </style>
 </resources>
