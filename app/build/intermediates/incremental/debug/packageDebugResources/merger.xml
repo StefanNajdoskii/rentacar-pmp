@@ -28,19 +28,17 @@
         <item>2000</item>
         <item>2025</item>
     </array><string-array name="pickup_locations">
-        <item>Airport</item>
         <item>City Center</item>
         <item>North Station</item>
-        <item>South Bus Station</item>
+        <item>Bus Station</item>
         <item>East District</item>
     </string-array></file><file path="C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\res\values\plurals.xml" qualifiers=""><plurals name="review_count">
         <item quantity="one">(%d review)</item>
         <item quantity="other">(%d reviews)</item>
     </plurals></file><file path="C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\res\values-mk\arrays.xml" qualifiers="mk"><string-array name="pickup_locations">
-        <item>Аеродром</item>
         <item>Центар на градот</item>
         <item>Северна станица</item>
-        <item>Јужна автобуска станица</item>
+        <item>Автобуска станица</item>
         <item>Источен реон</item>
     </string-array></file><file path="C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\res\values-mk\plurals.xml" qualifiers="mk"><plurals name="review_count">
         <item quantity="one">(%d рецензија)</item>
