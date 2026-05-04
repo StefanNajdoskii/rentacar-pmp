@@ -3,6 +3,7 @@ package com.rentacar.payment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -24,6 +25,10 @@ class PaymentFragment : Fragment() {
     private val viewModel: PaymentViewModel by viewModels()
     private val args: PaymentFragmentArgs by navArgs()
     private val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+
+    companion object {
+        private const val TAG = "PaymentFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,27 +62,39 @@ class PaymentFragment : Fragment() {
 
     private fun pay() {
         val cardNumber = binding.etCardNumber.text.toString()
-        val expiry = binding.etExpiry.text.toString()
-        val cvc = binding.etCvc.text.toString()
-        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val expiry     = binding.etExpiry.text.toString()
+        val cvc        = binding.etCvc.text.toString()
+
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId == null) {
+            Log.e(TAG, "pay: no authenticated user")
+            Snackbar.make(binding.root, R.string.error_not_logged_in, Snackbar.LENGTH_LONG).show()
+            return
+        }
+
+        Log.d(TAG, "pay: userId=$userId bookingId=${args.bookingId} card=${cardNumber.take(4)}… expiry=$expiry")
 
         val expParts = expiry.split("/")
         val month = expParts.getOrNull(0)?.trim()?.toIntOrNull() ?: 0
-        val year = expParts.getOrNull(1)?.trim()?.toIntOrNull() ?: 0
+        val year  = expParts.getOrNull(1)?.trim()?.toIntOrNull() ?: 0
 
         viewModel.processPayment(
             cardNumber = cardNumber,
-            expMonth = month,
-            expYear = year,
-            cvc = cvc,
-            userId = userId,
-            bookingId = args.bookingId,
-            totalPrice = args.totalPrice.toDouble()
+            expMonth   = month,
+            expYear    = year,
+            cvc        = cvc,
+            userId     = userId,
+            bookingId  = args.bookingId,
+            totalPrice = args.totalPrice.toDouble(),
+            carName    = args.carName,
+            startDate  = args.startDate,
+            endDate    = args.endDate
         )
     }
 
     private fun setupObservers() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
+            Log.d(TAG, "state → $state")
             when (state) {
                 is PaymentState.Loading -> {
                     binding.progressBar.isVisible = true

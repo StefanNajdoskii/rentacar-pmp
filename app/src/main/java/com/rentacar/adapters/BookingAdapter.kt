@@ -56,14 +56,14 @@ class BookingAdapter(
                 tvStatus.setTextColor(root.context.getColor(statusColor))
 
                 tvPaymentStatus.text = when (booking.paymentStatus) {
-                    "paid" -> root.context.getString(R.string.payment_status_paid)
-                    "failed" -> root.context.getString(R.string.payment_status_failed)
-                    else -> root.context.getString(R.string.payment_status_pending)
+                    "paid", "completed" -> root.context.getString(R.string.payment_status_paid)
+                    "failed"            -> root.context.getString(R.string.payment_status_failed)
+                    else                -> root.context.getString(R.string.payment_status_pending)
                 }
                 val payColor = when (booking.paymentStatus) {
-                    "paid" -> R.color.status_confirmed
-                    "failed" -> R.color.status_cancelled
-                    else -> R.color.status_pending
+                    "paid", "completed" -> R.color.status_confirmed
+                    "failed"            -> R.color.status_cancelled
+                    else                -> R.color.status_pending
                 }
                 tvPaymentStatus.setTextColor(root.context.getColor(payColor))
 

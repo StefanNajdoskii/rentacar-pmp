@@ -2391,6 +2391,7 @@
     <string name="error_google_not_available">Google sign-in is not available on this device.</string>
     <string name="error_icon_content_description">Error</string>
     <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_not_logged_in">You must be logged in to complete payment</string>
     <string name="error_password_length">Password must be at least 6 characters</string>
     <string name="error_password_required">Password is required</string>
     <string name="error_passwords_mismatch">Passwords do not match</string>
@@ -7696,6 +7697,13 @@
         <item name="colorError">@color/error</item>
     </style>
     <style name="Theme.RentaCar.NoActionBar" parent="Theme.RentaCar"/>
+    <style name="Theme.SplashScreen" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+    </style>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>

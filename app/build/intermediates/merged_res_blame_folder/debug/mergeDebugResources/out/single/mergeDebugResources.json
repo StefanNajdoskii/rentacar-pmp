@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.rentacar.app-debug-113:/layout_activity_splash.xml.flat",
+        "source": "com.rentacar.app-main-115:/layout/activity_splash.xml"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_fragment_filter_bottom_sheet.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\fragment_filter_bottom_sheet.xml"
     },
@@ -48,24 +52,20 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.rentacar.app-debug-113:/navigation_nav_graph.xml.flat",
-        "source": "com.rentacar.app-main-115:/navigation/nav_graph.xml"
-    },
-    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxhdpi_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxhdpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxxhdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxxhdpi\\ic_launcher.xml"
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_fragment_car_list.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\fragment_car_list.xml"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xhdpi_ic_launcher.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xhdpi\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_fragment_car_list.xml.flat",
-        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\fragment_car_list.xml"
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxxhdpi\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_profile.xml.flat",
@@ -80,16 +80,20 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_car_logo.xml"
     },
     {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\activity_splash.xml"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_dialog_rating.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\dialog_rating.xml"
     },
     {
-        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_logout.xml.flat",
-        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_logout.xml"
-    },
-    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_item_car.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\item_car.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_logout.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_logout.xml"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -98,6 +102,22 @@
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_item_spec.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\item_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_splash_background.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\splash_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_rentacarlogo.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\rentacarlogo.png"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-mdpi_ic_launcher.xml.flat",
@@ -124,6 +144,10 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\navigation\\nav_graph.xml"
     },
     {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_item_review.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\item_review.xml"
     },
@@ -132,8 +156,16 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\fragment_booking.xml"
     },
     {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\layout_fragment_car_detail.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\layout\\fragment_car_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_account_circle.xml.flat",
@@ -148,8 +180,24 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_calendar.xml"
     },
     {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_notification.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_notification.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_logo.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_location.xml.flat",
@@ -196,11 +244,19 @@
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_facebook.xml"
     },
     {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\drawable_ic_person.xml.flat",
         "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\drawable\\ic_person.xml"
     },
     {
-        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-debug-113:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Stefan\\.gradle\\daemon\\9.0.0\\com.rentacar.app-main-115:\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

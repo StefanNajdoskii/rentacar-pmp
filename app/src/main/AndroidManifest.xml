@@ -16,16 +16,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RentaCar">
 
-        <!-- Login / Register -->
+        <!-- Splash -->
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".auth.SplashActivity"
             android:exported="true"
+            android:theme="@style/Theme.SplashScreen"
             android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login / Register -->
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified" />
 
         <activity
             android:name=".auth.RegisterActivity"
