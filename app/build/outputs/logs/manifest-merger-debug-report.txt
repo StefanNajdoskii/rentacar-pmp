@@ -508,7 +508,7 @@ MERGED from [com.facebook.android:facebook-common:16.3.0] C:\Users\Stefan\.gradl
 		ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:73:13-36
 	android:name
 		ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:72:13-58
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:string/fb_login_protocol_scheme
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
 ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:74:13-79:29
 action#android.intent.action.VIEW
 ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:75:17-69
@@ -523,9 +523,9 @@ ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.x
 	android:name
 		ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:77:27-75
 data
-ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:78:17-74
+ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:78:17-75
 	android:scheme
-		ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:78:23-71
+		ADDED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml:78:23-72
 uses-sdk
 INJECTED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Stefan\Desktop\Klaud\RentaCar\app\src\main\AndroidManifest.xml

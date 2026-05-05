@@ -77,9 +77,9 @@
     <string name="error_password_length">Password must be at least 6 characters</string>
     <string name="error_password_required">Password is required</string>
     <string name="error_passwords_mismatch">Passwords do not match</string>
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
-    <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
-    <string name="fb_login_protocol_scheme">fbYOUR_FACEBOOK_APP_ID</string>
+    <string name="facebook_app_id">955481957376945</string>
+    <string name="facebook_client_token">7f1c7cb2dbb0b403769486405cb13a95</string>
+    <string name="fb_login_protocol_scheme">fb955481957376945</string>
     <string name="filter_all_brands">All Brands</string>
     <string name="filter_apply">Apply</string>
     <string name="filter_brand">Brand</string>
