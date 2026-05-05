@@ -37,6 +37,7 @@ drawable ic_logout
 drawable ic_notification
 drawable ic_person
 drawable ic_profile
+drawable rentacarlogo
 id action_bookingHistory_to_payment
 id action_booking_to_payment
 id action_carDetail_to_booking
@@ -146,6 +147,7 @@ id tv_year_display
 layout activity_login
 layout activity_main
 layout activity_register
+layout activity_splash
 layout dialog_display_name
 layout dialog_rating
 layout fragment_booking
@@ -201,6 +203,7 @@ string error_facebook_login
 string error_google_login
 string error_google_not_available
 string error_invalid_email
+string error_not_logged_in
 string error_password_length
 string error_password_required
 string error_passwords_mismatch
@@ -295,4 +298,5 @@ string unavailable
 string yes
 style Theme.RentaCar
 style Theme.RentaCar.NoActionBar
+style Theme.SplashScreen
 xml locales_config

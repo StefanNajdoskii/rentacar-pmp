@@ -18,7 +18,8 @@
             android:layout_height="120dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_car_logo"
+            android:src="@drawable/rentacarlogo"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/app_name" />
 
         <TextView

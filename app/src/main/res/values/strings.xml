@@ -116,9 +116,9 @@
 
     <!-- Firebase / 3rd party (replace with real values) -->
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
-    <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
-    <string name="fb_login_protocol_scheme">fbYOUR_FACEBOOK_APP_ID</string>
+    <string name="facebook_app_id">955481957376945</string>
+    <string name="facebook_client_token">7f1c7cb2dbb0b403769486405cb13a95</string>
+    <string name="fb_login_protocol_scheme">fb955481957376945</string>
 
     <!-- Search &amp; Filters -->
     <string name="filter_title">Filter Cars</string>
@@ -159,4 +159,5 @@
     <string name="payment_status_paid">Paid ✓</string>
     <string name="payment_status_pending">Payment Pending</string>
     <string name="payment_status_failed">Payment Failed</string>
+    <string name="error_not_logged_in">You must be logged in to complete payment</string>
 </resources>

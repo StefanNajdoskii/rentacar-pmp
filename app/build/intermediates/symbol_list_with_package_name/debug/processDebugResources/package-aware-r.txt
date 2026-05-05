@@ -3555,6 +3555,7 @@ drawable pay_button_generic_background_dark
 drawable pay_button_generic_background_light
 drawable pay_button_generic_background_mask_dark
 drawable pay_button_generic_background_mask_light
+drawable rentacarlogo
 drawable stripe
 drawable stripe_3ds2_ic_amex
 drawable stripe_3ds2_ic_arrow
@@ -4658,6 +4659,7 @@ layout abc_tooltip
 layout activity_login
 layout activity_main
 layout activity_register
+layout activity_splash
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout com_facebook_activity_layout
@@ -4960,6 +4962,7 @@ string error_google_login
 string error_google_not_available
 string error_icon_content_description
 string error_invalid_email
+string error_not_logged_in
 string error_password_length
 string error_password_required
 string error_passwords_mismatch
@@ -6245,6 +6248,7 @@ style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
 style Theme_RentaCar
 style Theme_RentaCar_NoActionBar
+style Theme_SplashScreen
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark

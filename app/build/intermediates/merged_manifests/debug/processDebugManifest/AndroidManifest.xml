@@ -56,17 +56,24 @@
         android:testOnly="true"
         android:theme="@style/Theme.RentaCar" >
 
-        <!-- Login / Register -->
+        <!-- Splash -->
         <activity
-            android:name="com.rentacar.auth.LoginActivity"
+            android:name="com.rentacar.auth.SplashActivity"
             android:exported="true"
-            android:screenOrientation="unspecified" >
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login / Register -->
+        <activity
+            android:name="com.rentacar.auth.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified" />
         <activity
             android:name="com.rentacar.auth.RegisterActivity"
             android:exported="false"
@@ -112,7 +119,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="string/fb_login_protocol_scheme" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
