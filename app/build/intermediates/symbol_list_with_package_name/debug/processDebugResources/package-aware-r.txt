@@ -3866,6 +3866,7 @@ id btn_book
 id btn_cancel
 id btn_cancel_rating
 id btn_confirm_booking
+id btn_delete
 id btn_done
 id btn_facebook
 id btn_filter
@@ -4859,6 +4860,7 @@ string action_cancel
 string action_confirm_booking
 string action_continue_anonymous
 string action_create_account
+string action_delete
 string action_facebook
 string action_google
 string action_login
@@ -4950,6 +4952,8 @@ string copy_toast_msg
 string default_error_message
 string default_popup_window_title
 string default_web_client_id
+string delete_booking
+string delete_booking_confirm
 string dest_title
 string dialog
 string dialog_display_name_message
@@ -5178,6 +5182,11 @@ string selected
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string status_cancelled
+string status_completed
+string status_confirmed
+string status_expired
+string status_pending
 string stripe_3ds2_brand_amex
 string stripe_3ds2_brand_cartesbancaires
 string stripe_3ds2_brand_discover

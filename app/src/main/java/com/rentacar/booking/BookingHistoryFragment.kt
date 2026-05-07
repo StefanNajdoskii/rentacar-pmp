@@ -36,16 +36,14 @@ class BookingHistoryFragment : Fragment() {
     private fun setupRecyclerView() {
         bookingAdapter = BookingAdapter(
             onCancelClick = { booking ->
-                if (booking.status == "confirmed" || booking.status == "pending") {
-                    MaterialAlertDialogBuilder(requireContext())
-                        .setTitle(R.string.cancel_booking)
-                        .setMessage(R.string.cancel_booking_confirm)
-                        .setPositiveButton(R.string.yes) { _, _ ->
-                            viewModel.cancelBooking(booking.id)
-                        }
-                        .setNegativeButton(R.string.no, null)
-                        .show()
-                }
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.cancel_booking)
+                    .setMessage(R.string.cancel_booking_confirm)
+                    .setPositiveButton(R.string.yes) { _, _ ->
+                        viewModel.cancelBooking(booking.id)
+                    }
+                    .setNegativeButton(R.string.no, null)
+                    .show()
             },
             onRateClick = { booking ->
                 viewModel.checkReviewedStatus(booking.id)
@@ -67,6 +65,16 @@ class BookingHistoryFragment : Fragment() {
                         pickupLocation = booking.pickupLocation
                     )
                 )
+            },
+            onDeleteClick = { booking ->
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.delete_booking)
+                    .setMessage(R.string.delete_booking_confirm)
+                    .setPositiveButton(R.string.yes) { _, _ ->
+                        viewModel.deleteBooking(booking.id)
+                    }
+                    .setNegativeButton(R.string.no, null)
+                    .show()
             }
         )
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())

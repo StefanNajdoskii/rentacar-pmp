@@ -21,6 +21,7 @@
 
     <!-- Actions -->
     <string name="action_login">Најава</string>
+    <string name="action_delete">ИЗБРИШИ</string>
     <string name="action_register">Создај сметка</string>
     <string name="action_create_account">Создај сметка</string>
     <string name="action_google">Google</string>
@@ -66,9 +67,18 @@
     <string name="no_rating_yet">Без оцена</string>
     <string name="pickup_not_selected">Не е избрана локација</string>
 
+    <!-- Booking status labels -->
+    <string name="status_confirmed">Потврдена</string>
+    <string name="status_pending">Во тек</string>
+    <string name="status_cancelled">Откажана</string>
+    <string name="status_completed">Завршена</string>
+    <string name="status_expired">Истечено</string>
+
     <!-- Dialog -->
     <string name="cancel_booking">Откажи резервација</string>
     <string name="cancel_booking_confirm">Дали сте сигурни дека сакате да ја откажете резервацијата?</string>
+    <string name="delete_booking">Избриши резервација</string>
+    <string name="delete_booking_confirm">Да се избрише оваа резервација?</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
 

@@ -25,6 +25,9 @@ public final class ItemBookingBinding implements ViewBinding {
   public final MaterialButton btnCancel;
 
   @NonNull
+  public final MaterialButton btnDelete;
+
+  @NonNull
   public final MaterialButton btnPayNow;
 
   @NonNull
@@ -52,11 +55,13 @@ public final class ItemBookingBinding implements ViewBinding {
   public final TextView tvTotal;
 
   private ItemBookingBinding(@NonNull MaterialCardView rootView, @NonNull MaterialButton btnCancel,
-      @NonNull MaterialButton btnPayNow, @NonNull MaterialButton btnRate, @NonNull ImageView ivCar,
-      @NonNull TextView tvCarName, @NonNull TextView tvDates, @NonNull TextView tvPaymentStatus,
+      @NonNull MaterialButton btnDelete, @NonNull MaterialButton btnPayNow,
+      @NonNull MaterialButton btnRate, @NonNull ImageView ivCar, @NonNull TextView tvCarName,
+      @NonNull TextView tvDates, @NonNull TextView tvPaymentStatus,
       @NonNull TextView tvPickupLocation, @NonNull TextView tvStatus, @NonNull TextView tvTotal) {
     this.rootView = rootView;
     this.btnCancel = btnCancel;
+    this.btnDelete = btnDelete;
     this.btnPayNow = btnPayNow;
     this.btnRate = btnRate;
     this.ivCar = ivCar;
@@ -98,6 +103,12 @@ public final class ItemBookingBinding implements ViewBinding {
       id = R.id.btn_cancel;
       MaterialButton btnCancel = ViewBindings.findChildViewById(rootView, id);
       if (btnCancel == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_delete;
+      MaterialButton btnDelete = ViewBindings.findChildViewById(rootView, id);
+      if (btnDelete == null) {
         break missingId;
       }
 
@@ -155,8 +166,8 @@ public final class ItemBookingBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemBookingBinding((MaterialCardView) rootView, btnCancel, btnPayNow, btnRate,
-          ivCar, tvCarName, tvDates, tvPaymentStatus, tvPickupLocation, tvStatus, tvTotal);
+      return new ItemBookingBinding((MaterialCardView) rootView, btnCancel, btnDelete, btnPayNow,
+          btnRate, ivCar, tvCarName, tvDates, tvPaymentStatus, tvPickupLocation, tvStatus, tvTotal);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

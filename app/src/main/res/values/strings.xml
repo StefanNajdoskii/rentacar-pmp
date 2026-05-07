@@ -21,6 +21,7 @@
 
     <!-- Actions -->
     <string name="action_login">Sign In</string>
+    <string name="action_delete">DELETE</string>
     <string name="action_register">Create Account</string>
     <string name="action_create_account">Create Account</string>
     <string name="action_google">Google</string>
@@ -66,9 +67,18 @@
     <string name="no_rating_yet">No rating</string>
     <string name="pickup_not_selected">No location selected</string>
 
+    <!-- Booking status labels -->
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_expired">Expired</string>
+
     <!-- Dialog -->
     <string name="cancel_booking">Cancel Booking</string>
     <string name="cancel_booking_confirm">Are you sure you want to cancel this booking?</string>
+    <string name="delete_booking">Delete Booking</string>
+    <string name="delete_booking_confirm">Delete this booking?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 

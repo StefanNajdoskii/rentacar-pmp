@@ -16,11 +16,11 @@ import java.util.*
 class BookingAdapter(
     private val onCancelClick: (Booking) -> Unit,
     private val onRateClick: (Booking) -> Unit = {},
-    private val onPayNowClick: (Booking) -> Unit = {}
+    private val onPayNowClick: (Booking) -> Unit = {},
+    private val onDeleteClick: (Booking) -> Unit = {}
 ) : ListAdapter<Booking, BookingAdapter.BookingViewHolder>(BOOKING_DIFF) {
 
     private val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-
     private var reviewedIds: Set<String> = emptySet()
 
     fun setReviewedIds(ids: Set<String>) {
@@ -42,55 +42,75 @@ class BookingAdapter(
 
         fun bind(booking: Booking) {
             binding.apply {
+                val ctx = root.context
+                val now = System.currentTimeMillis()
+
+                val isPaid = booking.paymentStatus == "paid" || booking.paymentStatus == "completed"
+                val isCancelled = booking.status == "cancelled"
+                val isRentalEnded = booking.endDate < now
+                // Expired = rental start date passed and payment was never made
+                val isExpired = booking.startDate < now && !isPaid && !isCancelled
+                // Completed = paid rental whose return date has passed
+                val isCompleted = isPaid && isRentalEnded && !isCancelled
+
                 tvCarName.text = "${booking.carBrand} ${booking.carModel}"
                 tvDates.text = "${dateFormat.format(Date(booking.startDate))} – ${dateFormat.format(Date(booking.endDate))}"
-                tvTotal.text = root.context.getString(R.string.total_price, booking.totalPrice)
-                tvStatus.text = booking.status.replaceFirstChar { it.uppercase() }
+                tvTotal.text = ctx.getString(R.string.total_price, booking.totalPrice)
 
-                val statusColor = when (booking.status) {
-                    "confirmed" -> R.color.status_confirmed
-                    "cancelled" -> R.color.status_cancelled
-                    "completed" -> R.color.status_completed
-                    else -> R.color.status_pending
-                }
-                tvStatus.setTextColor(root.context.getColor(statusColor))
-
-                tvPaymentStatus.text = when (booking.paymentStatus) {
-                    "paid", "completed" -> root.context.getString(R.string.payment_status_paid)
-                    "failed"            -> root.context.getString(R.string.payment_status_failed)
-                    else                -> root.context.getString(R.string.payment_status_pending)
-                }
-                val payColor = when (booking.paymentStatus) {
-                    "paid", "completed" -> R.color.status_confirmed
-                    "failed"            -> R.color.status_cancelled
-                    else                -> R.color.status_pending
-                }
-                tvPaymentStatus.setTextColor(root.context.getColor(payColor))
-
-                tvPickupLocation.isVisible = booking.pickupLocation.isNotEmpty()
-                tvPickupLocation.text = if (booking.pickupLocation.isNotEmpty())
-                    root.context.getString(R.string.label_pickup_location_value, booking.pickupLocation)
-                else ""
-
-                Glide.with(root.context)
+                Glide.with(ctx)
                     .load(booking.carImageUrl)
                     .placeholder(R.drawable.ic_car_placeholder)
                     .centerCrop()
                     .into(ivCar)
 
-                val canCancel = booking.status == "confirmed" || booking.status == "pending"
-                btnCancel.isEnabled = canCancel
-                btnCancel.alpha = if (canCancel) 1f else 0.4f
-                btnCancel.setOnClickListener { if (canCancel) onCancelClick(booking) }
+                tvPickupLocation.isVisible = booking.pickupLocation.isNotEmpty()
+                tvPickupLocation.text = if (booking.pickupLocation.isNotEmpty())
+                    ctx.getString(R.string.label_pickup_location_value, booking.pickupLocation)
+                else ""
 
-                val isPast = booking.endDate < System.currentTimeMillis()
-                val canRate = isPast && booking.status != "cancelled" && booking.id !in reviewedIds
+                // ── Booking status label ──────────────────────────────────────
+                val (statusLabel, statusColor) = when {
+                    isCancelled  -> ctx.getString(R.string.status_cancelled) to R.color.status_cancelled
+                    isCompleted  -> ctx.getString(R.string.status_completed) to R.color.status_completed
+                    isExpired    -> ctx.getString(R.string.status_expired)   to R.color.status_cancelled
+                    isPaid       -> ctx.getString(R.string.status_confirmed) to R.color.status_confirmed
+                    else         -> ctx.getString(R.string.status_pending)   to R.color.status_pending
+                }
+                tvStatus.text = statusLabel
+                tvStatus.setTextColor(ctx.getColor(statusColor))
+
+                // ── Payment status label ──────────────────────────────────────
+                val (payLabel, payColor) = when {
+                    isCancelled                        -> ctx.getString(R.string.status_cancelled)       to R.color.status_cancelled
+                    isPaid                             -> ctx.getString(R.string.payment_status_paid)    to R.color.status_confirmed
+                    isExpired                          -> ctx.getString(R.string.status_expired)         to R.color.status_cancelled
+                    booking.paymentStatus == "failed"  -> ctx.getString(R.string.payment_status_failed)  to R.color.status_cancelled
+                    else                               -> ctx.getString(R.string.payment_status_pending) to R.color.status_pending
+                }
+                tvPaymentStatus.text = payLabel
+                tvPaymentStatus.setTextColor(ctx.getColor(payColor))
+
+                // ── Buttons ───────────────────────────────────────────────────
+
+                // DELETE: cancelled bookings OR paid rentals whose return date has passed
+                val showDelete = isCancelled || isCompleted
+                btnDelete.isVisible = showDelete
+                btnDelete.setOnClickListener { if (showDelete) onDeleteClick(booking) }
+
+                // CANCEL: active/upcoming paid bookings OR pending non-expired bookings
+                val showCancel = !isCancelled && !isExpired && !isCompleted
+                btnCancel.isVisible = showCancel
+                btnCancel.setOnClickListener { if (showCancel) onCancelClick(booking) }
+
+                // PAY NOW: payment still pending, not expired, not cancelled
+                val showPayNow = !isPaid && !isExpired && !isCancelled
+                btnPayNow.isVisible = showPayNow
+                btnPayNow.setOnClickListener { if (showPayNow) onPayNowClick(booking) }
+
+                // RATE: rental ended, paid, not cancelled, not yet reviewed
+                val canRate = isRentalEnded && isPaid && !isCancelled && booking.id !in reviewedIds
                 btnRate.isVisible = canRate
                 btnRate.setOnClickListener { if (canRate) onRateClick(booking) }
-
-                val canPayNow = booking.paymentStatus == "pending" && booking.status != "cancelled"
-                btnPayNow.isVisible = canPayNow
-                btnPayNow.setOnClickListener { if (canPayNow) onPayNowClick(booking) }
             }
         }
     }

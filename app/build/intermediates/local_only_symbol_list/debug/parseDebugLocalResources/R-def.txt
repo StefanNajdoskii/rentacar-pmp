@@ -53,6 +53,7 @@ id btn_book
 id btn_cancel
 id btn_cancel_rating
 id btn_confirm_booking
+id btn_delete
 id btn_done
 id btn_facebook
 id btn_filter
@@ -171,6 +172,7 @@ string action_cancel
 string action_confirm_booking
 string action_continue_anonymous
 string action_create_account
+string action_delete
 string action_facebook
 string action_google
 string action_login
@@ -196,6 +198,8 @@ string car_type_suv
 string cd_car_image
 string com.google.firebase.crashlytics.mapping_file_id
 string default_web_client_id
+string delete_booking
+string delete_booking_confirm
 string dialog_display_name_message
 string dialog_display_name_title
 string error_email_required
@@ -284,6 +288,11 @@ string rating_submitted
 string rating_title
 string review_no_comment
 string select_rental_dates
+string status_cancelled
+string status_completed
+string status_confirmed
+string status_expired
+string status_pending
 string title_booking
 string title_bookings
 string title_car_detail

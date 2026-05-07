@@ -36,6 +36,7 @@ class CarRepository(
         firestoreRepository.getCars().collect { remoteCars ->
             if (remoteCars.isNotEmpty()) {
                 carDao.insertCars(remoteCars.map { it.toEntity() })
+                carDao.deleteExcept(remoteCars.map { it.id })
             }
             emit(Unit)
         }

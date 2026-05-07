@@ -36,6 +36,26 @@ class BookingRepository(
         }
     }
 
+    suspend fun deleteBooking(bookingId: String) {
+        firestoreRepository.deleteBooking(bookingId)
+        bookingDao.deleteBookingById(bookingId)
+    }
+
+    suspend fun autoExpireBookings(userId: String) {
+        val now = System.currentTimeMillis()
+        bookingDao.getBookingsForUserOnce(userId).forEach { entity ->
+            if (entity.startDate < now &&
+                entity.paymentStatus == "pending" &&
+                entity.status != "cancelled"
+            ) {
+                try {
+                    firestoreRepository.cancelBooking(entity.id)
+                    bookingDao.updateBooking(entity.copy(status = "cancelled"))
+                } catch (_: Exception) { }
+            }
+        }
+    }
+
     /**
      * Keeps a live Firestore snapshot listener open for the user's bookings.
      * Each update is written to Room and a Unit is emitted so callers can track

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <string-array name="pickup_locations">
+        <item>Центар на градот</item>
+        <item>Северна станица</item>
+        <item>Автобуска станица</item>
+        <item>Источен реон</item>
+    </string-array>
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d ново известување</item>
+    <item quantity="other">%d нови известувања</item>
+  </plurals>
+    <plurals name="review_count">
+        <item quantity="one">(%d рецензија)</item>
+        <item quantity="other">(%d рецензии)</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Движи се кон дома"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Движи се нагоре"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Повеќе опции"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Прикажи ги сите"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Избери апликација"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ИСКЛУЧЕНО"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ВКЛУЧЕНО"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"избриши"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"вселена"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Пребарување…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Исчисти барање"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Пребарај барање"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Пребарај"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Испрати барање"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Гласовно пребарување"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Сподели со"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Сподели со <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Собери"</string>
+    <string name="action_book_now">Резервирај сега</string>
+    <string name="action_cancel">Откажи</string>
+    <string name="action_confirm_booking">Потврди резервација</string>
+    <string name="action_continue_anonymous">Продолжи како гостин</string>
+    <string name="action_create_account">Создај сметка</string>
+    <string name="action_delete">ИЗБРИШИ</string>
+    <string name="action_facebook">Facebook</string>
+    <string name="action_google">Google</string>
+    <string name="action_login">Најава</string>
+    <string name="action_pay_now">ПЛАТИ СЕГА</string>
+    <string name="action_rate">Оцени</string>
+    <string name="action_register">Создај сметка</string>
+    <string name="action_save">Зачувај</string>
+    <string name="action_select_dates">Избери датуми</string>
+    <string name="action_select_location">Избери место за преземање</string>
+    <string name="action_sign_out">Одјава</string>
+    <string name="action_skip">Прескокни</string>
+    <string name="action_update_profile">Ажурирај профил</string>
+    <string name="anonymous_user">Анонимен корисник</string>
+    <string name="app_name">Изнајми Автомобил МК</string>
+    <string name="available">Достапно</string>
+    <string name="bottomsheet_action_collapse">Соберете го долниот лист</string>
+    <string name="bottomsheet_action_expand">Проширете го долниот лист</string>
+    <string name="bottomsheet_action_expand_halfway">Прошири до половина</string>
+    <string name="bottomsheet_drag_handle_clicked">Рачката за влечење е допрена двапати</string>
+    <string name="bottomsheet_drag_handle_content_description">Рачка за влечење</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Одговори"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Видео"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Одбиј"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Спушти"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Дојдовен повик"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Тековен повик"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Проверка на дојдовен повик"</string>
+    <string name="cancel_booking">Откажи резервација</string>
+    <string name="cancel_booking_confirm">Дали сте сигурни дека сакате да ја откажете резервацијата?</string>
+    <string name="car_type_coupe">Купе</string>
+    <string name="car_type_electric">Електричен</string>
+    <string name="car_type_hatchback">Хечбек</string>
+    <string name="car_type_sedan">Седан</string>
+    <string name="car_type_suv">SUV</string>
+    <string name="cd_car_image">Слика на автомобил</string>
+    <string name="character_counter_content_description">Внесени се %1$d од %2$d знаци</string>
+    <string name="character_counter_overflowed_content_description">Ограничувањето на знаците надмина %1$d од %2$d</string>
+    <string name="clear_text_end_icon_content_description">Избриши го текстот</string>
+    <string msgid="406453423630273620" name="close_drawer">"Затворете го менито за навигација"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"Затворете го листот"</string>
+    <string msgid="5389587048670450460" name="collapsed">"Собрано"</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Овозможи</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s нема да се извршува ако не овозможите услуги на Google Play.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Овозможи ги услугите на Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Инсталирај</string>
+    <string name="common_google_play_services_install_text">%1$s нема да се извршува без услугите на Google Play што ги нема на уредот.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Преземи ги услугите на Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">Достапност на услугите на Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Грешка на услугите на Google Play</string>
+    <string name="common_google_play_services_unknown_issue">%1$s има проблеми со услугите на Google Play. Обидете се повторно.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s нема да се извршува без услугите на Google Play, што не се подржани од уредов.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Ажурирај</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s нема да се извршува ако не ги ажурирате услугите на Google Play.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Ажурирај ги услугите на Google Play</string>
+    <string name="common_google_play_services_updating_text">%1$s нема да се извршува без услугите на Google Play што се ажурираат во моментов.</string>
+    <string name="common_google_play_services_wear_update_text">Потребна е нова верзија на услугите на Google Play. Таа наскоро самата ќе се ажурира.</string>
+    <string name="common_open_on_phone">Отвори на телефонот</string>
+    <string name="common_signin_button_text">Најави се</string>
+    <string name="common_signin_button_text_long">Најави се со Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Линкот е копиран во привремена меморија"</string>
+    <string msgid="8038256446254964252" name="default_error_message">"Неважечки запис"</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"Скокачки прозорец"</string>
+    <string name="delete_booking">Избриши резервација</string>
+    <string name="delete_booking_confirm">Да се избрише оваа резервација?</string>
+    <string msgid="4057925834421392736" name="dialog">"Дијалог"</string>
+    <string name="dialog_display_name_message">Внесете прикажано име за вашиот профил.</string>
+    <string name="dialog_display_name_title">Како да ве нарекуваме?</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"Паѓачко мени"</string>
+    <string name="error_email_required">Е-маилот е задолжителен</string>
+    <string name="error_facebook_login">Facebook најавата не успеа</string>
+    <string name="error_icon_content_description">Грешка</string>
+    <string name="error_invalid_email">Невалидна е-маил адреса</string>
+    <string name="error_password_length">Лозинката мора да содржи најмалку 6 знаци</string>
+    <string name="error_password_required">Лозинката е задолжителна</string>
+    <string name="error_passwords_mismatch">Лозинките не се совпаѓаат</string>
+    <string msgid="5974471714631304645" name="expanded">"Проширено"</string>
+    <string name="exposed_dropdown_menu_content_description">Прикажи паѓачко мени</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Копирај го линкот"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Отвори во прелистувач"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Сподели линк"</string>
+    <string name="filter_all_brands">Сите марки</string>
+    <string name="filter_apply">Примени</string>
+    <string name="filter_brand">Марка</string>
+    <string name="filter_button_desc">Филтрирај автомобили</string>
+    <string name="filter_car_type">Тип на автомобил</string>
+    <string name="filter_price_range">Ценовен опсег (€/ден)</string>
+    <string name="filter_reset">Ресетирај</string>
+    <string name="filter_title">Филтрирај автомобили</string>
+    <string name="filter_year_range">Опсег на години</string>
+    <string name="gpay_logo_description">Google Pay</string>
+    <string name="hint_confirm_password">Потврди лозинка</string>
+    <string name="hint_display_name">Прикажано име</string>
+    <string name="hint_email">Е-маил адреса</string>
+    <string name="hint_password">Лозинка</string>
+    <string name="hint_search_cars">Пребарај автомобили…</string>
+    <string name="hint_your_name">Вашето име</string>
+    <string name="icon_content_description">Икона за дијалог</string>
+    <string msgid="6827826412747255547" name="in_progress">"Во тек"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"Делумно проверено"</string>
+    <string name="item_view_role_description">Картичка</string>
+    <string name="label_dark_mode">Темен режим</string>
+    <string name="label_description">Опис</string>
+    <string name="label_from">Од</string>
+    <string name="label_fuel">Тип на гориво</string>
+    <string name="label_language">Јазик</string>
+    <string name="label_location">Локација</string>
+    <string name="label_pickup_location">Место за преземање</string>
+    <string name="label_pickup_location_value">📍 %s</string>
+    <string name="label_rental_period">Период на изнајмување</string>
+    <string name="label_reviews">Рецензии</string>
+    <string name="label_seats">Седишта</string>
+    <string name="label_to">До</string>
+    <string name="label_transmission">Менувач</string>
+    <string name="label_year">Година</string>
+    <string name="language_english">English</string>
+    <string name="language_macedonian">Македонски</string>
+    <string name="material_clock_toggle_content_description">Изберете претпладне или попладне</string>
+    <string name="material_hour_24h_suffix">%1$s часа</string>
+    <string name="material_hour_selection">Изберете час</string>
+    <string name="material_hour_suffix">%1$s часот</string>
+    <string name="material_minute_selection">Избери минути</string>
+    <string name="material_minute_suffix">%1$s минути</string>
+    <string name="material_timepicker_am">пр.</string>
+    <string name="material_timepicker_clock_mode_description">Префрлете се на режимот за часовник за да внесете време.</string>
+    <string name="material_timepicker_hour">Час</string>
+    <string name="material_timepicker_minute">Минута</string>
+    <string name="material_timepicker_pm">по.</string>
+    <string name="material_timepicker_select_time">Изберете време</string>
+    <string name="material_timepicker_text_input_mode_description">Префрлете се на режимот за внесување текст за да внесете време.</string>
+    <string name="mtrl_badge_numberless_content_description">Ново известување</string>
+    <string name="mtrl_chip_close_icon_content_description">Отстрани %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">Над %1$d нови известувања</string>
+    <string name="mtrl_picker_a11y_next_month">Промени на следниот месец</string>
+    <string name="mtrl_picker_a11y_prev_month">Промени на претходниот месец</string>
+    <string name="mtrl_picker_announce_current_range_selection">Избор на датум на започнување: %1$s – Избор на датум на завршување: %2$s</string>
+    <string name="mtrl_picker_announce_current_selection">Тековен избор: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection_none">нема</string>
+    <string name="mtrl_picker_cancel">Откажи</string>
+    <string name="mtrl_picker_confirm">Во ред</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Изберете датум</string>
+    <string name="mtrl_picker_date_header_unselected">Избран датум</string>
+    <string name="mtrl_picker_day_of_week_column_header">Колона со денови: %1$s</string>
+    <string name="mtrl_picker_end_date_description">Краен датум %1$s</string>
+    <string name="mtrl_picker_invalid_format">Неважечки формат.</string>
+    <string name="mtrl_picker_invalid_format_example">Пример: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Користете: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Погрешен опсег.</string>
+    <string name="mtrl_picker_navigate_to_current_year_description">Одете на тековната година: %1$d</string>
+    <string name="mtrl_picker_navigate_to_year_description">Оди на %1$d година</string>
+    <string name="mtrl_picker_out_of_range">Надвор од опсег: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Почетен датум - %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s - краен датум</string>
+    <string name="mtrl_picker_range_header_selected">%1$s - %2$s</string>
+    <string name="mtrl_picker_range_header_title">Изберете опсег</string>
+    <string name="mtrl_picker_range_header_unselected">Почетен датум - краен датум</string>
+    <string name="mtrl_picker_save">Зачувај</string>
+    <string name="mtrl_picker_start_date_description">Почетен датум %1$s</string>
+    <string name="mtrl_picker_text_input_date_hint">Датум</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">Краен датум</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Почетен датум</string>
+    <string name="mtrl_picker_text_input_day_abbr">д</string>
+    <string name="mtrl_picker_text_input_month_abbr">м</string>
+    <string name="mtrl_picker_text_input_year_abbr">г</string>
+    <string name="mtrl_picker_today_description">Денес: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Префрли на режим за внесување во календарот</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Допрете за да се префрлите на приказ на „Календар“</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Префрли на режим за внесување текст</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Допрете за да се префрлите на приказ на година</string>
+    <string name="mtrl_timepicker_cancel">Откажи</string>
+    <string name="mtrl_timepicker_confirm">Во ред</string>
+    <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Оди нагоре"</string>
+    <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Отворете ја фиоката за навигација"</string>
+    <string msgid="542007171693138492" name="navigation_menu">"Мени за навигација"</string>
+    <string name="no">Не</string>
+    <string name="no_bookings">Немате резервации</string>
+    <string name="no_cars_available">Нема достапни автомобили</string>
+    <string name="no_name_set">Нема поставено име</string>
+    <string name="no_rating_yet">Без оцена</string>
+    <string name="no_reviews_yet">Нема рецензии. Бидете први!</string>
+    <string msgid="6610465462668679431" name="not_selected">"Не е избрано"</string>
+    <string name="notification_booking_confirmed_body">Вашиот %s е резервиран од %s. Пријатна вожња!</string>
+    <string name="notification_booking_confirmed_title">Резервацијата е потврдена!</string>
+    <string name="notification_channel_bookings">Потврди за резервации</string>
+    <string name="notification_channel_name">Известувања – Изнајми автомобил</string>
+    <string name="notification_channel_reminders">Потсетници за враќање</string>
+    <string name="notification_reminder_body">Не заборавајте — %s треба да се врати на %s. Безбедна вожња!</string>
+    <string name="notification_reminder_title">Потсетник за враќање</string>
+    <string msgid="875452955155264703" name="off">"Исклучено"</string>
+    <string msgid="8655164131929253426" name="on">"Вклучено"</string>
+    <string name="or_continue_with">— или продолжи со —</string>
+    <string name="password_toggle_content_description">Прикажи ја лозинката</string>
+    <string name="payment_card_details">Детали на картичката</string>
+    <string name="payment_card_number">Број на картичка</string>
+    <string name="payment_cvc">CVC</string>
+    <string name="payment_done">Прикажи ги моите резервации</string>
+    <string name="payment_expiry">ММ/ГГ</string>
+    <string name="payment_order_summary">Резиме на нарачката</string>
+    <string name="payment_pay_now">Плати сега</string>
+    <string name="payment_status_failed">Плаќањето не успеа</string>
+    <string name="payment_status_paid">Платено ✓</string>
+    <string name="payment_status_pending">Плаќањето е во тек</string>
+    <string name="payment_success_detail">Наплатено на %s со завршеток %s</string>
+    <string name="payment_success_title">Плаќањето е успешно!</string>
+    <string name="payment_test_hint">Тест режим — користете картичка 4242 4242 4242 4242, иден датум, произволен CVC</string>
+    <string name="pickup_not_selected">Не е избрана локација</string>
+    <string name="placeholder_date">—</string>
+    <string name="price_per_day">€%.2f / ден</string>
+    <string msgid="5941395253238309765" name="range_end">"Крај на опсегот"</string>
+    <string msgid="7097486360902471446" name="range_start">"Почеток на опсегот"</string>
+    <string name="rating_comment_hint">Споделете го вашето искуство (опционално)</string>
+    <string name="rating_select_stars">Ве молиме изберете оцена со ѕвезди</string>
+    <string name="rating_submit">Поднеси рецензија</string>
+    <string name="rating_submitted">Ви благодариме за рецензијата!</string>
+    <string name="rating_title">Оценете го вашето искуство со %s</string>
+    <string name="review_no_comment">Нема коментар</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Пребарај"</string>
+    <string name="select_rental_dates">Избери датуми за изнајмување</string>
+    <string msgid="6043586758067023" name="selected">"Избрано"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="status_cancelled">Откажана</string>
+    <string name="status_completed">Завршена</string>
+    <string name="status_confirmed">Потврдена</string>
+    <string name="status_expired">Истечено</string>
+    <string name="status_pending">Во тек</string>
+    <string name="stripe_hcaptcha_loading_text">Потврдување дека сте човек</string>
+    <string msgid="2561197295334830845" name="switch_role">"Прекинувач"</string>
+    <string msgid="1672349317127674378" name="tab">"Картичка"</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> проценти."</string>
+    <string name="title_booking">Резервирај</string>
+    <string name="title_bookings">Мои резервации</string>
+    <string name="title_car_detail">Детали за автомобил</string>
+    <string name="title_cars">Автомобили</string>
+    <string name="title_payment">Плаќање</string>
+    <string name="title_profile">Профил</string>
+    <string name="title_register">Создај сметка</string>
+    <string name="total_price">Вкупно: €%.2f</string>
+    <string name="transmission_automatic">Автоматски</string>
+    <string name="transmission_manual">Рачен</string>
+    <string name="unavailable">Недостапно</string>
+    <string name="wallet_buy_button_place_holder">Купувај со Google</string>
+    <string name="yes">Да</string>
+</resources>

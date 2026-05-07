@@ -41,6 +41,7 @@
     <string name="action_confirm_booking">Confirm Booking</string>
     <string name="action_continue_anonymous">Continue as Guest</string>
     <string name="action_create_account">Create Account</string>
+    <string name="action_delete">DELETE</string>
     <string name="action_facebook">Facebook</string>
     <string name="action_google">Google</string>
     <string name="action_login">Sign In</string>
@@ -66,6 +67,8 @@
     <string name="cd_car_image">Car image</string>
     <string name="com.google.firebase.crashlytics.mapping_file_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="delete_booking">Delete Booking</string>
+    <string name="delete_booking_confirm">Delete this booking?</string>
     <string name="dialog_display_name_message">Enter a display name to personalize your profile.</string>
     <string name="dialog_display_name_title">What should we call you?</string>
     <string name="error_email_required">Email is required</string>
@@ -154,6 +157,11 @@
     <string name="rating_title">Rate your experience with %s</string>
     <string name="review_no_comment">No comment provided</string>
     <string name="select_rental_dates">Select Rental Dates</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_expired">Expired</string>
+    <string name="status_pending">Pending</string>
     <string name="title_booking">Book Car</string>
     <string name="title_bookings">My Bookings</string>
     <string name="title_car_detail">Car Details</string>

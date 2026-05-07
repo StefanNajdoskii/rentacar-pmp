@@ -8,8 +8,14 @@ interface BookingDao {
     @Query("SELECT * FROM bookings WHERE userId = :userId ORDER BY createdAt DESC")
     fun getBookingsForUser(userId: String): Flow<List<BookingEntity>>
 
+    @Query("SELECT * FROM bookings WHERE userId = :userId")
+    suspend fun getBookingsForUserOnce(userId: String): List<BookingEntity>
+
     @Query("SELECT * FROM bookings WHERE id = :bookingId")
     suspend fun getBookingById(bookingId: String): BookingEntity?
+
+    @Query("DELETE FROM bookings WHERE id = :bookingId")
+    suspend fun deleteBookingById(bookingId: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBooking(booking: BookingEntity)

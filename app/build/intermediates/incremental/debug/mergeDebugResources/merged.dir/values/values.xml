@@ -2286,6 +2286,7 @@
     <string name="action_confirm_booking">Confirm Booking</string>
     <string name="action_continue_anonymous">Continue as Guest</string>
     <string name="action_create_account">Create Account</string>
+    <string name="action_delete">DELETE</string>
     <string name="action_facebook">Facebook</string>
     <string name="action_google">Google</string>
     <string name="action_login">Sign In</string>
@@ -2377,6 +2378,8 @@
     <string name="default_error_message">"Invalid input"</string>
     <string name="default_popup_window_title" ns1:ignore="ExtraTranslation">"Pop-Up Window"</string>
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="delete_booking">Delete Booking</string>
+    <string name="delete_booking_confirm">Delete this booking?</string>
     <string name="dest_title">destination title</string>
     <string name="dialog">"Dialog"</string>
     <string name="dialog_display_name_message">Enter a display name to personalize your profile.</string>
@@ -2615,6 +2618,11 @@
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_expired">Expired</string>
+    <string name="status_pending">Pending</string>
     <string name="stripe_3ds2_brand_amex" translatable="false">American Express</string>
     <string name="stripe_3ds2_brand_cartesbancaires" translatable="false">Cartes Bancaires</string>
     <string name="stripe_3ds2_brand_discover" translatable="false">Discover</string>

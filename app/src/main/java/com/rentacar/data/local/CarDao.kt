@@ -32,6 +32,9 @@ interface CarDao {
     @Delete
     suspend fun deleteCar(car: CarEntity)
 
+    @Query("DELETE FROM cars WHERE id NOT IN (:ids)")
+    suspend fun deleteExcept(ids: List<String>)
+
     @Query("DELETE FROM cars")
     suspend fun deleteAllCars()
 }
