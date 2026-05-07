@@ -69,6 +69,10 @@ class FirestoreRepository {
         bookingsCollection.document(bookingId).update("status", "cancelled").await()
     }
 
+    suspend fun deleteBooking(bookingId: String) {
+        bookingsCollection.document(bookingId).delete().await()
+    }
+
     suspend fun updateBookingPayment(
         bookingId: String,
         paymentStatus: String,

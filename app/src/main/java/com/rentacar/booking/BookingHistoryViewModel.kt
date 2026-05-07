@@ -39,9 +39,15 @@ class BookingHistoryViewModel(application: Application) : AndroidViewModel(appli
         if (userId.isNotEmpty()) {
             viewModelScope.launch {
                 _isLoading.value = true
+                var firstEmit = true
                 try {
-                    bookingRepository.syncBookingsFromFirestore(userId)
-                        .collect { _isLoading.value = false }
+                    bookingRepository.syncBookingsFromFirestore(userId).collect {
+                        if (firstEmit) {
+                            firstEmit = false
+                            bookingRepository.autoExpireBookings(userId)
+                        }
+                        _isLoading.value = false
+                    }
                 } catch (e: CancellationException) {
                     throw e
                 } catch (e: Exception) {
@@ -57,6 +63,14 @@ class BookingHistoryViewModel(application: Application) : AndroidViewModel(appli
     fun cancelBooking(bookingId: String) = viewModelScope.launch {
         try {
             bookingRepository.cancelBooking(bookingId, userId)
+        } catch (e: Exception) {
+            _error.value = e.message
+        }
+    }
+
+    fun deleteBooking(bookingId: String) = viewModelScope.launch {
+        try {
+            bookingRepository.deleteBooking(bookingId)
         } catch (e: Exception) {
             _error.value = e.message
         }
