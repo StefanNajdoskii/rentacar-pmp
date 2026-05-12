@@ -49,7 +49,7 @@ public final class BookingDao_Impl implements BookingDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `bookings` (`id`,`userId`,`carId`,`carBrand`,`carModel`,`carImageUrl`,`startDate`,`endDate`,`totalPrice`,`status`,`pickupLocation`,`paymentStatus`,`createdAt`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `bookings` (`id`,`userId`,`carId`,`carBrand`,`carModel`,`carImageUrl`,`startDate`,`endDate`,`totalPrice`,`status`,`pickupLocation`,`paymentStatus`,`createdAt`,`paymentId`,`paymentAmount`,`paymentDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -68,6 +68,9 @@ public final class BookingDao_Impl implements BookingDao {
         statement.bindString(11, entity.getPickupLocation());
         statement.bindString(12, entity.getPaymentStatus());
         statement.bindLong(13, entity.getCreatedAt());
+        statement.bindString(14, entity.getPaymentId());
+        statement.bindDouble(15, entity.getPaymentAmount());
+        statement.bindLong(16, entity.getPaymentDate());
       }
     };
     this.__deletionAdapterOfBookingEntity = new EntityDeletionOrUpdateAdapter<BookingEntity>(__db) {
@@ -87,7 +90,7 @@ public final class BookingDao_Impl implements BookingDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `bookings` SET `id` = ?,`userId` = ?,`carId` = ?,`carBrand` = ?,`carModel` = ?,`carImageUrl` = ?,`startDate` = ?,`endDate` = ?,`totalPrice` = ?,`status` = ?,`pickupLocation` = ?,`paymentStatus` = ?,`createdAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `bookings` SET `id` = ?,`userId` = ?,`carId` = ?,`carBrand` = ?,`carModel` = ?,`carImageUrl` = ?,`startDate` = ?,`endDate` = ?,`totalPrice` = ?,`status` = ?,`pickupLocation` = ?,`paymentStatus` = ?,`createdAt` = ?,`paymentId` = ?,`paymentAmount` = ?,`paymentDate` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -106,7 +109,10 @@ public final class BookingDao_Impl implements BookingDao {
         statement.bindString(11, entity.getPickupLocation());
         statement.bindString(12, entity.getPaymentStatus());
         statement.bindLong(13, entity.getCreatedAt());
-        statement.bindString(14, entity.getId());
+        statement.bindString(14, entity.getPaymentId());
+        statement.bindDouble(15, entity.getPaymentAmount());
+        statement.bindLong(16, entity.getPaymentDate());
+        statement.bindString(17, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteBookingById = new SharedSQLiteStatement(__db) {
@@ -280,6 +286,9 @@ public final class BookingDao_Impl implements BookingDao {
           final int _cursorIndexOfPickupLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "pickupLocation");
           final int _cursorIndexOfPaymentStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentStatus");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfPaymentId = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentId");
+          final int _cursorIndexOfPaymentAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentAmount");
+          final int _cursorIndexOfPaymentDate = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentDate");
           final List<BookingEntity> _result = new ArrayList<BookingEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final BookingEntity _item;
@@ -309,7 +318,13 @@ public final class BookingDao_Impl implements BookingDao {
             _tmpPaymentStatus = _cursor.getString(_cursorIndexOfPaymentStatus);
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt);
+            final String _tmpPaymentId;
+            _tmpPaymentId = _cursor.getString(_cursorIndexOfPaymentId);
+            final double _tmpPaymentAmount;
+            _tmpPaymentAmount = _cursor.getDouble(_cursorIndexOfPaymentAmount);
+            final long _tmpPaymentDate;
+            _tmpPaymentDate = _cursor.getLong(_cursorIndexOfPaymentDate);
+            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt,_tmpPaymentId,_tmpPaymentAmount,_tmpPaymentDate);
             _result.add(_item);
           }
           return _result;
@@ -352,6 +367,9 @@ public final class BookingDao_Impl implements BookingDao {
           final int _cursorIndexOfPickupLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "pickupLocation");
           final int _cursorIndexOfPaymentStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentStatus");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfPaymentId = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentId");
+          final int _cursorIndexOfPaymentAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentAmount");
+          final int _cursorIndexOfPaymentDate = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentDate");
           final List<BookingEntity> _result = new ArrayList<BookingEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final BookingEntity _item;
@@ -381,7 +399,13 @@ public final class BookingDao_Impl implements BookingDao {
             _tmpPaymentStatus = _cursor.getString(_cursorIndexOfPaymentStatus);
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt);
+            final String _tmpPaymentId;
+            _tmpPaymentId = _cursor.getString(_cursorIndexOfPaymentId);
+            final double _tmpPaymentAmount;
+            _tmpPaymentAmount = _cursor.getDouble(_cursorIndexOfPaymentAmount);
+            final long _tmpPaymentDate;
+            _tmpPaymentDate = _cursor.getLong(_cursorIndexOfPaymentDate);
+            _item = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt,_tmpPaymentId,_tmpPaymentAmount,_tmpPaymentDate);
             _result.add(_item);
           }
           return _result;
@@ -420,6 +444,9 @@ public final class BookingDao_Impl implements BookingDao {
           final int _cursorIndexOfPickupLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "pickupLocation");
           final int _cursorIndexOfPaymentStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentStatus");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfPaymentId = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentId");
+          final int _cursorIndexOfPaymentAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentAmount");
+          final int _cursorIndexOfPaymentDate = CursorUtil.getColumnIndexOrThrow(_cursor, "paymentDate");
           final BookingEntity _result;
           if (_cursor.moveToFirst()) {
             final String _tmpId;
@@ -448,7 +475,13 @@ public final class BookingDao_Impl implements BookingDao {
             _tmpPaymentStatus = _cursor.getString(_cursorIndexOfPaymentStatus);
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _result = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt);
+            final String _tmpPaymentId;
+            _tmpPaymentId = _cursor.getString(_cursorIndexOfPaymentId);
+            final double _tmpPaymentAmount;
+            _tmpPaymentAmount = _cursor.getDouble(_cursorIndexOfPaymentAmount);
+            final long _tmpPaymentDate;
+            _tmpPaymentDate = _cursor.getLong(_cursorIndexOfPaymentDate);
+            _result = new BookingEntity(_tmpId,_tmpUserId,_tmpCarId,_tmpCarBrand,_tmpCarModel,_tmpCarImageUrl,_tmpStartDate,_tmpEndDate,_tmpTotalPrice,_tmpStatus,_tmpPickupLocation,_tmpPaymentStatus,_tmpCreatedAt,_tmpPaymentId,_tmpPaymentAmount,_tmpPaymentDate);
           } else {
             _result = null;
           }

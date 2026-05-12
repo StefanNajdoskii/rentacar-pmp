@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-111:/values-vi-rVN/values-vi-rVN.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-vi-rVN/values-vi-rVN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\3f2743d5b85d51d6612652550283adbb\\transformed\\stripe-3ds2-android-6.1.8\\res\\values-vi-rVN\\values-vi-rVN.xml",

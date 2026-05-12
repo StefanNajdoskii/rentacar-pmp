@@ -235,8 +235,6 @@
     <string name="notification_channel_reminders">Потсетници за враќање</string>
     <string name="notification_reminder_body">Не заборавајте — %s треба да се врати на %s. Безбедна вожња!</string>
     <string name="notification_reminder_title">Потсетник за враќање</string>
-    <string msgid="875452955155264703" name="off">"Исклучено"</string>
-    <string msgid="8655164131929253426" name="on">"Вклучено"</string>
     <string name="or_continue_with">— или продолжи со —</string>
     <string name="password_toggle_content_description">Прикажи ја лозинката</string>
     <string name="payment_card_details">Детали на картичката</string>
@@ -266,6 +264,9 @@
     <string msgid="6264217191555673260" name="search_menu_title">"Пребарај"</string>
     <string name="select_rental_dates">Избери датуми за изнајмување</string>
     <string msgid="6043586758067023" name="selected">"Избрано"</string>
+    <string msgid="4139871816613051306" name="state_empty">"Празно"</string>
+    <string msgid="5834637030682409883" name="state_off">"Исклучено"</string>
+    <string msgid="1490883874751719580" name="state_on">"Вклучено"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="status_cancelled">Откажана</string>
     <string name="status_completed">Завршена</string>
@@ -283,6 +284,8 @@
     <string name="title_payment">Плаќање</string>
     <string name="title_profile">Профил</string>
     <string name="title_register">Создај сметка</string>
+    <string msgid="3765533235322692011" name="tooltip_description">"совет за алатка"</string>
+    <string msgid="3124740595719787496" name="tooltip_label">"прикажи совет за алатка"</string>
     <string name="total_price">Вкупно: €%.2f</string>
     <string name="transmission_automatic">Автоматски</string>
     <string name="transmission_manual">Рачен</string>

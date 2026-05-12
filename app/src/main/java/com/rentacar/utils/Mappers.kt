@@ -19,7 +19,8 @@ fun CarEntity.toModel() = Car(
 
 fun Booking.toEntity() = BookingEntity(
     id, userId, carId, carBrand, carModel, carImageUrl,
-    startDate, endDate, totalPrice, status, pickupLocation, paymentStatus, createdAt
+    startDate, endDate, totalPrice, status, pickupLocation, paymentStatus, createdAt,
+    paymentId, paymentAmount, paymentDate
 )
 
 fun BookingEntity.toModel() = Booking(
@@ -35,7 +36,10 @@ fun BookingEntity.toModel() = Booking(
     status = status,
     pickupLocation = pickupLocation,
     paymentStatus = paymentStatus,
-    createdAt = createdAt
+    createdAt = createdAt,
+    paymentId = paymentId,
+    paymentAmount = paymentAmount,
+    paymentDate = paymentDate
 )
 
 fun Review.toEntity() = ReviewEntity(

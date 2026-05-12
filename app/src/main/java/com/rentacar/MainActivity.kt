@@ -1,8 +1,13 @@
 package com.rentacar
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    private val requestNotificationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(RentACarApp.applyLocale(newBase))
@@ -50,7 +58,19 @@ class MainActivity : AppCompatActivity() {
 
         // Only on the very first time MainActivity loads after the displayNameSet flag is
         // unset — gated on a SharedPreferences boolean so this never re-fires once dismissed.
-        if (savedInstanceState == null) maybeShowDisplayNameDialog()
+        if (savedInstanceState == null) {
+            requestNotificationPermissionIfNeeded()
+            maybeShowDisplayNameDialog()
+        }
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 
     private fun maybeShowDisplayNameDialog() {
