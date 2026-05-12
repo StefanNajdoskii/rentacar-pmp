@@ -1,5 +1,3 @@
-
-   python3 -c "
    content = '''# Rent-a-Car MK
 
    > A native Android application for browsing, booking, and managing car rentals -- built with Kotlin, Firebase, and
