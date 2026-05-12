@@ -125,7 +125,7 @@
     <string name="notification_reminder_body">Don\'t forget — your %s is due back on %s. Safe travels!</string>
 
     <!-- Firebase / 3rd party (replace with real values) -->
-    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="default_web_client_id">1090009769528-g58ahip9r4b1pcqqsorjk1ea8fcqffka.apps.googleusercontent.com</string>
     <string name="facebook_app_id">955481957376945</string>
     <string name="facebook_client_token">7f1c7cb2dbb0b403769486405cb13a95</string>
     <string name="fb_login_protocol_scheme">fb955481957376945</string>

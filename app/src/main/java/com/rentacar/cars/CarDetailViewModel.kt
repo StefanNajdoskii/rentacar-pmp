@@ -9,6 +9,7 @@ import com.rentacar.data.repository.ReviewRepository
 import com.rentacar.model.Car
 import com.rentacar.model.Review
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class CarDetailViewModel(application: Application) : AndroidViewModel(application) {
@@ -32,14 +33,20 @@ class CarDetailViewModel(application: Application) : AndroidViewModel(applicatio
     private val _reviewCount = MutableLiveData(0)
     val reviewCount: LiveData<Int> = _reviewCount
 
+    private var reviewObserveJob: Job? = null
+    private var reviewSyncJob: Job? = null
+
     fun loadCar(carId: String) {
+        reviewObserveJob?.cancel()
+        reviewSyncJob?.cancel()
+
         viewModelScope.launch {
             _isLoading.value = true
             _car.value = carRepository.getCarById(carId)
             _isLoading.value = false
         }
         // Observe Room reviews and keep them synced from Firestore
-        viewModelScope.launch {
+        reviewObserveJob = viewModelScope.launch {
             reviewRepository.getReviewsForCar(carId).collect { list ->
                 _reviews.value = list
                 _averageRating.value = list.map { it.rating }.average()
@@ -48,7 +55,7 @@ class CarDetailViewModel(application: Application) : AndroidViewModel(applicatio
             }
         }
         // Pull-sync from Firestore in background (writes into Room, which triggers the above)
-        viewModelScope.launch {
+        reviewSyncJob = viewModelScope.launch {
             try {
                 reviewRepository.syncReviewsForCar(carId).collect { }
             } catch (e: CancellationException) {

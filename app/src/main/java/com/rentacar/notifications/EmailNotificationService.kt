@@ -1,6 +1,7 @@
 package com.rentacar.notifications
 
 import android.util.Log
+import com.rentacar.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -34,12 +35,13 @@ import java.util.Locale
  */
 object EmailNotificationService {
 
-    private const val EMAILJS_URL  = "https://api.emailjs.com/api/v1.0/email/send"
-    private const val SERVICE_ID   = "service_q8xv5si"
-    private const val TEMPLATE_ID  = "template_gbysmi7"
-    private const val PUBLIC_KEY   = "k_wbe0ri9nNBwXuwa"
-    private const val ADMIN_EMAIL  = "najdoskistefan1@gmail.com"
-    private const val FROM_NAME    = "RentaCar MK"
+    private const val EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send"
+    private const val FROM_NAME   = "RentaCar MK"
+
+    private val SERVICE_ID   get() = BuildConfig.EMAILJS_SERVICE_ID
+    private val TEMPLATE_ID  get() = BuildConfig.EMAILJS_TEMPLATE_ID
+    private val PUBLIC_KEY   get() = BuildConfig.EMAILJS_PUBLIC_KEY
+    private val ADMIN_EMAIL  get() = BuildConfig.EMAILJS_ADMIN_EMAIL
 
     private val dateFmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
     private val tsFmt   = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault())

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-111:/values-v21/values-v21.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-v21/values-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\4f0c296f6be12ad3e9a034f510017fd9\\transformed\\core-1.13.1\\res\\values-v21\\values-v21.xml",

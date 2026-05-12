@@ -4092,6 +4092,7 @@ id group_divider
 id grouping
 id groups
 id header_title
+id hide_graphics_layer_in_inspector_tag
 id hide_ime_id
 id hide_in_inspector_tag
 id hideable
@@ -5140,8 +5141,6 @@ string notification_channel_name
 string notification_channel_reminders
 string notification_reminder_body
 string notification_reminder_title
-string off
-string on
 string or_continue_with
 string password_toggle_content_description
 string path_password_eye
@@ -5181,6 +5180,9 @@ string select_rental_dates
 string selected
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
+string state_empty
+string state_off
+string state_on
 string status_bar_notification_info_overflow
 string status_cancelled
 string status_completed
@@ -5561,6 +5563,8 @@ string title_cars
 string title_payment
 string title_profile
 string title_register
+string tooltip_description
+string tooltip_label
 string total_price
 string transmission_automatic
 string transmission_manual

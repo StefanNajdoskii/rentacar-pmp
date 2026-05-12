@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-111:/values-rw/values-rw.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-rw/values-rw.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\d549950f2f9ea1c4c8b4e180a1217c2f\\transformed\\hcaptcha-20.52.0\\res\\values-rw\\values-rw.xml",

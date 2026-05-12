@@ -35,14 +35,14 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `cars` (`id` TEXT NOT NULL, `brand` TEXT NOT NULL, `model` TEXT NOT NULL, `year` INTEGER NOT NULL, `pricePerDay` REAL NOT NULL, `imageUrl` TEXT NOT NULL, `description` TEXT NOT NULL, `transmission` TEXT NOT NULL, `fuelType` TEXT NOT NULL, `seats` INTEGER NOT NULL, `available` INTEGER NOT NULL, `location` TEXT NOT NULL, `carType` TEXT NOT NULL, PRIMARY KEY(`id`))");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `bookings` (`id` TEXT NOT NULL, `userId` TEXT NOT NULL, `carId` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `carImageUrl` TEXT NOT NULL, `startDate` INTEGER NOT NULL, `endDate` INTEGER NOT NULL, `totalPrice` REAL NOT NULL, `status` TEXT NOT NULL, `pickupLocation` TEXT NOT NULL, `paymentStatus` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `bookings` (`id` TEXT NOT NULL, `userId` TEXT NOT NULL, `carId` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `carImageUrl` TEXT NOT NULL, `startDate` INTEGER NOT NULL, `endDate` INTEGER NOT NULL, `totalPrice` REAL NOT NULL, `status` TEXT NOT NULL, `pickupLocation` TEXT NOT NULL, `paymentStatus` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `paymentId` TEXT NOT NULL, `paymentAmount` REAL NOT NULL, `paymentDate` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `reviews` (`id` TEXT NOT NULL, `bookingId` TEXT NOT NULL, `carId` TEXT NOT NULL, `userId` TEXT NOT NULL, `rating` REAL NOT NULL, `comment` TEXT NOT NULL, `carBrand` TEXT NOT NULL, `carModel` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c08748d2e2b82c3d3dff44d717ab68d9')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fd0bafe9e8b3d6d617d46577fdb7f6b5')");
       }
 
       @Override
@@ -116,7 +116,7 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoCars + "\n"
                   + " Found:\n" + _existingCars);
         }
-        final HashMap<String, TableInfo.Column> _columnsBookings = new HashMap<String, TableInfo.Column>(13);
+        final HashMap<String, TableInfo.Column> _columnsBookings = new HashMap<String, TableInfo.Column>(16);
         _columnsBookings.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("userId", new TableInfo.Column("userId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("carId", new TableInfo.Column("carId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -130,6 +130,9 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsBookings.put("pickupLocation", new TableInfo.Column("pickupLocation", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("paymentStatus", new TableInfo.Column("paymentStatus", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBookings.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBookings.put("paymentId", new TableInfo.Column("paymentId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBookings.put("paymentAmount", new TableInfo.Column("paymentAmount", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBookings.put("paymentDate", new TableInfo.Column("paymentDate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysBookings = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesBookings = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoBookings = new TableInfo("bookings", _columnsBookings, _foreignKeysBookings, _indicesBookings);
@@ -160,7 +163,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "c08748d2e2b82c3d3dff44d717ab68d9", "31d828fd40518d9f432b534d35496507");
+    }, "fd0bafe9e8b3d6d617d46577fdb7f6b5", "308149b7ede102e8c5a9bbfd04e71c21");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

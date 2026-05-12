@@ -32,7 +32,9 @@ class AuthViewModel : ViewModel() {
         _authState.value = AuthState.Loading
         try {
             val result = auth.signInWithEmailAndPassword(email, password).await()
-            _authState.value = AuthState.Success(result.user!!)
+            _authState.value = result.user
+                ?.let { AuthState.Success(it) }
+                ?: AuthState.Error("Sign-in failed: no user returned")
         } catch (e: Exception) {
             _authState.value = AuthState.Error(e.message ?: "Sign-in failed")
         }
@@ -42,7 +44,9 @@ class AuthViewModel : ViewModel() {
         _authState.value = AuthState.Loading
         try {
             val result = auth.createUserWithEmailAndPassword(email, password).await()
-            _authState.value = AuthState.Success(result.user!!)
+            _authState.value = result.user
+                ?.let { AuthState.Success(it) }
+                ?: AuthState.Error("Registration failed: no user returned")
         } catch (e: Exception) {
             _authState.value = AuthState.Error(e.message ?: "Registration failed")
         }
@@ -52,7 +56,9 @@ class AuthViewModel : ViewModel() {
         _authState.value = AuthState.Loading
         try {
             val result = auth.signInAnonymously().await()
-            _authState.value = AuthState.Success(result.user!!)
+            _authState.value = result.user
+                ?.let { AuthState.Success(it) }
+                ?: AuthState.Error("Anonymous sign-in failed: no user returned")
         } catch (e: Exception) {
             _authState.value = AuthState.Error(e.message ?: "Anonymous sign-in failed")
         }
@@ -63,7 +69,9 @@ class AuthViewModel : ViewModel() {
         try {
             val credential = GoogleAuthProvider.getCredential(account.idToken, null)
             val result = auth.signInWithCredential(credential).await()
-            _authState.value = AuthState.Success(result.user!!)
+            _authState.value = result.user
+                ?.let { AuthState.Success(it) }
+                ?: AuthState.Error("Google sign-in failed: no user returned")
         } catch (e: Exception) {
             _authState.value = AuthState.Error(e.message ?: "Google sign-in failed")
         }
@@ -74,7 +82,9 @@ class AuthViewModel : ViewModel() {
         try {
             val credential = FacebookAuthProvider.getCredential(token.token)
             val result = auth.signInWithCredential(credential).await()
-            _authState.value = AuthState.Success(result.user!!)
+            _authState.value = result.user
+                ?.let { AuthState.Success(it) }
+                ?: AuthState.Error("Facebook sign-in failed: no user returned")
         } catch (e: Exception) {
             _authState.value = AuthState.Error(e.message ?: "Facebook sign-in failed")
         }

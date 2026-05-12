@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-111:/values-ms-rMY/values-ms-rMY.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-ms-rMY/values-ms-rMY.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\ff5477a509610af56e326adfe08c64be\\transformed\\payments-ui-core-20.52.0\\res\\values-ms-rMY\\values-ms-rMY.xml",
