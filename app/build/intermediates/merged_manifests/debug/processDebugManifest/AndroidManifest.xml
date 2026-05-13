@@ -56,24 +56,17 @@
         android:testOnly="true"
         android:theme="@style/Theme.RentaCar" >
 
-        <!-- Splash -->
+        <!-- Login / Register -->
         <activity
-            android:name="com.rentacar.auth.SplashActivity"
+            android:name="com.rentacar.auth.LoginActivity"
             android:exported="true"
-            android:screenOrientation="unspecified"
-            android:theme="@style/Theme.SplashScreen" >
+            android:screenOrientation="unspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Login / Register -->
-        <activity
-            android:name="com.rentacar.auth.LoginActivity"
-            android:exported="false"
-            android:screenOrientation="unspecified" />
         <activity
             android:name="com.rentacar.auth.RegisterActivity"
             android:exported="false"
@@ -97,7 +90,7 @@
         <!-- WorkManager auto-initializes via the Startup library — no extra config needed -->
 
 
-        <!-- Facebook App ID (replace with real value) -->
+        <!-- Facebook App ID -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -584,19 +577,6 @@
         <uses-library
             android:name="androidx.window.sidecar"
             android:required="false" />
-        <!--
-         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-         with the application context. This config is merged in with the host app's manifest,
-         but there can only be one provider with the same authority activated at any given
-         point; so if the end user has two or more different apps that use Facebook SDK, only the
-         first one will be able to use the provider. To work around this problem, we use the
-         following placeholder in the authority to identify each host application as if it was
-         a completely different provider.
-        -->
-        <provider
-            android:name="com.facebook.internal.FacebookInitProvider"
-            android:authorities="com.rentacar.FacebookInitProvider"
-            android:exported="false" />
 
         <receiver
             android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"

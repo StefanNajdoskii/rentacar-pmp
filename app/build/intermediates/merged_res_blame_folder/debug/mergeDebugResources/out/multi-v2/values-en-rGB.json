@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\043d1e9175a4bdec143fb915943e3f6b\\transformed\\ui-release\\res\\values-en-rGB\\values-en-rGB.xml",

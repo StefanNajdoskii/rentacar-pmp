@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\0b28583524ac2ec1426d19e0fb908a01\\transformed\\navigation-ui-2.8.4\\res\\values-en-rAU\\values-en-rAU.xml",

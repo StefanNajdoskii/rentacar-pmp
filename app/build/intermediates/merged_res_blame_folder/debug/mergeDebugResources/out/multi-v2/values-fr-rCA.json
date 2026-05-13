@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\fcaba56d658abf3dda026aaf280fb9dc\\transformed\\stripe-ui-core-20.52.0\\res\\values-fr-rCA\\values-fr-rCA.xml",

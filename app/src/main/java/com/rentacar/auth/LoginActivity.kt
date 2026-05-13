@@ -7,9 +7,11 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.FacebookSdk
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -23,29 +25,28 @@ import com.rentacar.MainActivity
 import com.rentacar.R
 import com.rentacar.RentACarApp
 import com.rentacar.databinding.ActivityLoginBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: AuthViewModel by viewModels()
 
-    // Nullable: setup may fail when Play Services are absent or the client ID is a placeholder.
     private var googleSignInClient: GoogleSignInClient? = null
-
-    private lateinit var callbackManager: CallbackManager
+    private var callbackManager: CallbackManager? = null
     private lateinit var analytics: FirebaseAnalytics
+    private var navigated = false
 
-    // Result handler for Google Sign-In. Guarded against null data and ApiException so the
-    // app never crashes when Play Services are unavailable (e.g. on the emulator).
     private val googleSignInLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        val data = result.data ?: return@registerForActivityResult   // cancelled with no data
+        val data = result.data ?: return@registerForActivityResult
         try {
             val account = GoogleSignIn.getSignedInAccountFromIntent(data)
-                .getResult(ApiException::class.java)                 // throws on failure
+                .getResult(ApiException::class.java)
             viewModel.signInWithGoogle(account)
         } catch (e: ApiException) {
-            // SIGN_IN_CANCELLED (12501) means the user dismissed the picker — show nothing.
             if (e.statusCode != GoogleSignInStatusCodes.SIGN_IN_CANCELLED) {
                 showError(getString(R.string.error_google_login))
             }
@@ -64,20 +65,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         analytics = FirebaseAnalytics.getInstance(this)
 
-        // Existing session: skip the display-name dialog (it's only shown for fresh logins).
         if (viewModel.currentUser != null) {
             navigateToMain()
             return
         }
 
         setupGoogleSignIn()
-        setupFacebookSignIn()
         setupObservers()
         setupClickListeners()
     }
 
-    // Wrapped in try-catch: GoogleSignIn.getClient() can throw if Play Services initialisation
-    // fails. Leaving googleSignInClient null disables the button gracefully in setupClickListeners.
     private fun setupGoogleSignIn() {
         try {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -90,9 +87,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupFacebookSignIn() {
-        callbackManager = CallbackManager.Factory.create()
-        LoginManager.getInstance().registerCallback(callbackManager,
+    private fun registerFacebookCallback(manager: CallbackManager) {
+        LoginManager.getInstance().registerCallback(manager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(result: LoginResult) {
                     viewModel.signInWithFacebook(result.accessToken)
@@ -106,6 +102,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.authState.observe(this) { state ->
+            if (isFinishing || isDestroyed) return@observe
             when (state) {
                 is AuthState.Loading -> showLoading(true)
                 is AuthState.Success -> {
@@ -143,7 +140,6 @@ class LoginActivity : AppCompatActivity() {
                 showError(getString(R.string.error_google_not_available))
                 return@setOnClickListener
             }
-            // Launching the intent can itself throw on devices without Play Services.
             try {
                 googleSignInLauncher.launch(client.signInIntent)
             } catch (e: Exception) {
@@ -152,15 +148,54 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnFacebook.setOnClickListener {
-            // logInWithReadPermissions can throw synchronously when the Facebook app ID is
-            // invalid or the SDK detects a configuration error before the callback fires.
-            try {
-                LoginManager.getInstance().logInWithReadPermissions(
-                    this, callbackManager, listOf("email", "public_profile")
-                )
-            } catch (e: Exception) {
-                showError(e.message ?: getString(R.string.error_facebook_login))
+            val existingManager = callbackManager
+            if (existingManager != null) {
+                // SDK already initialized on a previous tap — launch immediately on main thread.
+                launchFacebookLogin(existingManager)
+                return@setOnClickListener
             }
+
+            // First tap: FacebookSdk.sdkInitialize() reads SharedPreferences, PackageManager
+            // metadata, and may open a network socket to validate the App ID. Running it on
+            // the main thread causes ANRs (seen as 5–15 s freezes). Do it on IO instead.
+            showLoading(true)
+            lifecycleScope.launch {
+                val initialized = withContext(Dispatchers.IO) {
+                    try {
+                        if (!FacebookSdk.isInitialized()) {
+                            FacebookSdk.sdkInitialize(applicationContext)
+                        }
+                        true
+                    } catch (e: Exception) {
+                        false
+                    }
+                }
+
+                // Back on Main dispatcher — safe to touch UI and launch the login Activity.
+                showLoading(false)
+                if (!initialized) {
+                    showError(getString(R.string.error_facebook_login))
+                    return@launch
+                }
+                try {
+                    val manager = CallbackManager.Factory.create()
+                    registerFacebookCallback(manager)
+                    callbackManager = manager
+                    launchFacebookLogin(manager)
+                } catch (e: Exception) {
+                    showError(e.message ?: getString(R.string.error_facebook_login))
+                }
+            }
+        }
+    }
+
+    private fun launchFacebookLogin(manager: CallbackManager) {
+        try {
+            LoginManager.getInstance().logInWithReadPermissions(
+                this, manager, listOf("public_profile")
+            )
+        } catch (e: Exception) {
+            showError(e.message ?: getString(R.string.error_facebook_login))
         }
     }
 
@@ -174,7 +209,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
-        binding.btnLogin.isEnabled = !show
+        val enabled = !show
+        binding.btnLogin.isEnabled = enabled
+        binding.btnGoogle.isEnabled = enabled
+        binding.btnFacebook.isEnabled = enabled
+        binding.btnAnonymous.isEnabled = enabled
     }
 
     private fun showError(message: String) {
@@ -182,13 +221,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToMain() {
+        if (navigated || isFinishing || isDestroyed) return
+        navigated = true
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager.onActivityResult(requestCode, resultCode, data)
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
 }

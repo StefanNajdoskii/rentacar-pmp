@@ -66,7 +66,7 @@
     <string name="car_type_suv">SUV</string>
     <string name="cd_car_image">Car image</string>
     <string name="com.google.firebase.crashlytics.mapping_file_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
-    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="default_web_client_id" translatable="false">1090009769528-g58ahip9r4b1pcqqsorjk1ea8fcqffka.apps.googleusercontent.com</string>
     <string name="delete_booking">Delete Booking</string>
     <string name="delete_booking_confirm">Delete this booking?</string>
     <string name="dialog_display_name_message">Enter a display name to personalize your profile.</string>
