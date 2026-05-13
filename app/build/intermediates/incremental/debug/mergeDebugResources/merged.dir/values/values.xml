@@ -1232,7 +1232,6 @@
     <dimen name="compat_notification_large_icon_max_height">320dp</dimen>
     <dimen name="compat_notification_large_icon_max_width">320dp</dimen>
     <dimen name="def_drawer_elevation">10dp</dimen>
-    <dimen name="default_gap">8dip</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
     <dimen name="design_bottom_navigation_active_item_min_width">96dp</dimen>
@@ -2378,7 +2377,7 @@
     <string name="copy_toast_msg">Link copied to clipboard</string>
     <string name="default_error_message">"Invalid input"</string>
     <string name="default_popup_window_title" ns1:ignore="ExtraTranslation">"Pop-Up Window"</string>
-    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="default_web_client_id" translatable="false">1090009769528-g58ahip9r4b1pcqqsorjk1ea8fcqffka.apps.googleusercontent.com</string>
     <string name="delete_booking">Delete Booking</string>
     <string name="delete_booking_confirm">Delete this booking?</string>
     <string name="dest_title">destination title</string>
@@ -12759,121 +12758,6 @@
         <attr name="android:offset"/>
         
         <attr name="android:color"/>
-    </declare-styleable>
-    <declare-styleable name="GridLayout">
-
-        
-
-
-        
-        <attr name="orientation">
-
-            <!-- Defines an horizontal widget. -->
-            <enum name="horizontal" value="0"/>
-            <!-- Defines a vertical widget. -->
-            <enum name="vertical" value="1"/>
-        </attr>
-        
-        <attr format="integer" name="rowCount"/>
-        
-        <attr format="integer" name="columnCount"/>
-        
-        <attr format="boolean" name="useDefaultMargins"/>
-        
-        <attr name="alignmentMode">
-
-            <!--
-            Align the bounds of the children.
-            See {@link android.widget.GridLayout#ALIGN_BOUNDS}.
-            -->
-            <enum name="alignBounds" value="0"/>
-            <!--
-            Align the margins of the children.
-            See {@link android.widget.GridLayout#ALIGN_MARGINS}.
-            -->
-            <enum name="alignMargins" value="1"/>
-        </attr>
-        
-        <attr format="boolean" name="rowOrderPreserved"/>
-        
-        <attr format="boolean" name="columnOrderPreserved"/>
-    </declare-styleable>
-    <declare-styleable name="GridLayout_Layout">
-
-        
-
-
-        
-
-        <attr name="android:layout_width"/>
-        <attr name="android:layout_height"/>
-        
-        <attr name="android:layout_margin"/>
-        
-        <attr name="android:layout_marginLeft"/>
-        
-        <attr name="android:layout_marginTop"/>
-        
-        <attr name="android:layout_marginRight"/>
-        
-        <attr name="android:layout_marginBottom"/>
-
-        
-
-        
-        <attr format="integer" name="layout_row"/>
-        
-        <attr format="integer" min="1" name="layout_rowSpan"/>
-        
-        <attr format="float" name="layout_rowWeight"/>
-        
-        <attr format="integer" name="layout_column"/>
-        
-        <attr format="integer" min="1" name="layout_columnSpan"/>
-        
-        <attr format="float" name="layout_columnWeight"/>
-        
-        <attr name="layout_gravity">
-
-            <!-- Push object to the top of its container, not changing its size. -->
-            <flag name="top" value="0x30"/>
-            <!-- Push object to the bottom of its container, not changing its size. -->
-            <flag name="bottom" value="0x50"/>
-            <!-- Push object to the left of its container, not changing its size. -->
-            <flag name="left" value="0x03"/>
-            <!-- Push object to the right of its container, not changing its size. -->
-            <flag name="right" value="0x05"/>
-            <!-- Place object in the vertical center of its container, not changing its size. -->
-            <flag name="center_vertical" value="0x10"/>
-            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
-            <flag name="fill_vertical" value="0x70"/>
-            <!-- Place object in the horizontal center of its container, not changing its size. -->
-            <flag name="center_horizontal" value="0x01"/>
-            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
-            <flag name="fill_horizontal" value="0x07"/>
-            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
-            <flag name="center" value="0x11"/>
-            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
-            <flag name="fill" value="0x77"/>
-            <!--
-             Additional option that can be set to have the top and/or bottom edges of
-             the child clipped to its container's bounds.
-             The clip will be based on the vertical gravity: a top gravity will clip the bottom
-             edge, a bottom gravity will clip the top edge, and neither will clip both edges.
-            -->
-            <flag name="clip_vertical" value="0x80"/>
-            <!--
-             Additional option that can be set to have the left and/or right edges of
-             the child clipped to its container's bounds.
-             The clip will be based on the horizontal gravity: a left gravity will clip the right
-             edge, a right gravity will clip the left edge, and neither will clip both edges.
-            -->
-            <flag name="clip_horizontal" value="0x08"/>
-            <!-- Push object to the beginning of its container, not changing its size. -->
-            <flag name="start" value="0x00800003"/>
-            <!-- Push object to the end of its container, not changing its size. -->
-            <flag name="end" value="0x00800005"/>
-        </attr>
     </declare-styleable>
     <declare-styleable name="ImageFilterView">
         <attr format="reference" name="blendSrc"/>

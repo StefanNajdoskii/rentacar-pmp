@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-en-rSG/values-en-rSG.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-en-rSG/values-en-rSG.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\9182cc4b2dc74aab103bdcf56d7a2894\\transformed\\play-services-wallet-19.3.0\\res\\values-en-rSG\\values.xml",

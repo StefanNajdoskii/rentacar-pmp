@@ -143,7 +143,6 @@ int attr alertDialogButtonGroupStyle 0x7f04002c
 int attr alertDialogCenterButtons 0x7f04002d
 int attr alertDialogStyle 0x7f04002e
 int attr alertDialogTheme 0x7f04002f
-int attr alignmentMode 0x7f040030
 int attr allowStacking 0x7f040031
 int attr alpha 0x7f040032
 int attr alphabeticModifiers 0x7f040033
@@ -431,8 +430,6 @@ int attr colorTertiary 0x7f04014c
 int attr colorTertiaryContainer 0x7f04014d
 int attr colorTertiaryFixed 0x7f04014e
 int attr colorTertiaryFixedDim 0x7f04014f
-int attr columnCount 0x7f040150
-int attr columnOrderPreserved 0x7f040151
 int attr com_facebook_auxiliary_view_position 0x7f040152
 int attr com_facebook_confirm_logout 0x7f040153
 int attr com_facebook_foreground_color 0x7f040154
@@ -794,9 +791,6 @@ int attr layout_anchorGravity 0x7f0402b7
 int attr layout_behavior 0x7f0402b8
 int attr layout_collapseMode 0x7f0402b9
 int attr layout_collapseParallaxMultiplier 0x7f0402ba
-int attr layout_column 0x7f0402bb
-int attr layout_columnSpan 0x7f0402bc
-int attr layout_columnWeight 0x7f0402bd
 int attr layout_constrainedHeight 0x7f0402be
 int attr layout_constrainedWidth 0x7f0402bf
 int attr layout_constraintBaseline_creator 0x7f0402c0
@@ -853,14 +847,10 @@ int attr layout_goneMarginLeft 0x7f0402f2
 int attr layout_goneMarginRight 0x7f0402f3
 int attr layout_goneMarginStart 0x7f0402f4
 int attr layout_goneMarginTop 0x7f0402f5
-int attr layout_gravity 0x7f0402f6
 int attr layout_insetEdge 0x7f0402f7
 int attr layout_keyline 0x7f0402f8
 int attr layout_marginBaseline 0x7f0402f9
 int attr layout_optimizationLevel 0x7f0402fa
-int attr layout_row 0x7f0402fb
-int attr layout_rowSpan 0x7f0402fc
-int attr layout_rowWeight 0x7f0402fd
 int attr layout_scrollEffect 0x7f0402fe
 int attr layout_scrollFlags 0x7f0402ff
 int attr layout_scrollInterpolator 0x7f040300
@@ -1047,7 +1037,6 @@ int attr onPositiveCross 0x7f0403b4
 int attr onShow 0x7f0403b5
 int attr onStateTransition 0x7f0403b6
 int attr onTouchUp 0x7f0403b7
-int attr orientation 0x7f0403b8
 int attr overlapAnchor 0x7f0403b9
 int attr overlay 0x7f0403ba
 int attr paddingBottomNoButtons 0x7f0403bb
@@ -1130,8 +1119,6 @@ int attr rotationCenterId 0x7f040407
 int attr round 0x7f040408
 int attr roundPercent 0x7f040409
 int attr route 0x7f04040a
-int attr rowCount 0x7f04040b
-int attr rowOrderPreserved 0x7f04040c
 int attr saturation 0x7f04040d
 int attr scaleFromTextSize 0x7f04040e
 int attr scopeUris 0x7f04040f
@@ -1435,7 +1422,6 @@ int attr uiZoomGestures 0x7f040538
 int attr upDuration 0x7f040539
 int attr uri 0x7f04053a
 int attr useCompatPadding 0x7f04053b
-int attr useDefaultMargins 0x7f04053c
 int attr useDrawerArrowDrawable 0x7f04053d
 int attr useMaterialThemeColors 0x7f04053e
 int attr useViewLifecycle 0x7f04053f
@@ -2503,7 +2489,6 @@ int dimen compat_control_corner_material 0x7f07006c
 int dimen compat_notification_large_icon_max_height 0x7f07006d
 int dimen compat_notification_large_icon_max_width 0x7f07006e
 int dimen def_drawer_elevation 0x7f07006f
-int dimen default_gap 0x7f070070
 int dimen design_appbar_elevation 0x7f070071
 int dimen design_bottom_navigation_active_item_max_width 0x7f070072
 int dimen design_bottom_navigation_active_item_min_width 0x7f070073
@@ -3804,8 +3789,6 @@ int id add_payment_method_card 0x7f0a0052
 int id adjust_height 0x7f0a0053
 int id adjust_width 0x7f0a0054
 int id alertTitle 0x7f0a0055
-int id alignBounds 0x7f0a0056
-int id alignMargins 0x7f0a0057
 int id aligned 0x7f0a0058
 int id all 0x7f0a0059
 int id allStates 0x7f0a005a
@@ -4100,7 +4083,6 @@ int id holo_light 0x7f0a017a
 int id home 0x7f0a017b
 int id homeAsUp 0x7f0a017c
 int id honorRequest 0x7f0a017d
-int id horizontal 0x7f0a017e
 int id horizontal_only 0x7f0a017f
 int id hybrid 0x7f0a0180
 int id icon 0x7f0a0181
@@ -4508,7 +4490,6 @@ int id unknown 0x7f0a0312
 int id unlabeled 0x7f0a0313
 int id up 0x7f0a0314
 int id useLogo 0x7f0a0315
-int id vertical 0x7f0a0316
 int id vertical_only 0x7f0a0317
 int id view_offset_helper 0x7f0a0318
 int id view_stub 0x7f0a0319
@@ -4660,7 +4641,6 @@ int layout abc_tooltip 0x7f0d001b
 int layout activity_login 0x7f0d001c
 int layout activity_main 0x7f0d001d
 int layout activity_register 0x7f0d001e
-int layout activity_splash 0x7f0d001f
 int layout browser_actions_context_menu_page 0x7f0d0020
 int layout browser_actions_context_menu_row 0x7f0d0021
 int layout com_facebook_activity_layout 0x7f0d0022
@@ -7875,29 +7855,6 @@ int styleable GradientColor_android_endY 11
 int[] styleable GradientColorItem { 0x010101a5, 0x01010514 }
 int styleable GradientColorItem_android_color 0
 int styleable GradientColorItem_android_offset 1
-int[] styleable GridLayout { 0x7f040030, 0x7f040150, 0x7f040151, 0x7f0403b8, 0x7f04040b, 0x7f04040c, 0x7f04053c }
-int styleable GridLayout_alignmentMode 0
-int styleable GridLayout_columnCount 1
-int styleable GridLayout_columnOrderPreserved 2
-int styleable GridLayout_orientation 3
-int styleable GridLayout_rowCount 4
-int styleable GridLayout_rowOrderPreserved 5
-int styleable GridLayout_useDefaultMargins 6
-int[] styleable GridLayout_Layout { 0x010100f4, 0x010100f5, 0x010100f6, 0x010100f7, 0x010100f8, 0x010100f9, 0x010100fa, 0x7f0402bb, 0x7f0402bc, 0x7f0402bd, 0x7f0402f6, 0x7f0402fb, 0x7f0402fc, 0x7f0402fd }
-int styleable GridLayout_Layout_android_layout_width 0
-int styleable GridLayout_Layout_android_layout_height 1
-int styleable GridLayout_Layout_android_layout_margin 2
-int styleable GridLayout_Layout_android_layout_marginLeft 3
-int styleable GridLayout_Layout_android_layout_marginTop 4
-int styleable GridLayout_Layout_android_layout_marginRight 5
-int styleable GridLayout_Layout_android_layout_marginBottom 6
-int styleable GridLayout_Layout_layout_column 7
-int styleable GridLayout_Layout_layout_columnSpan 8
-int styleable GridLayout_Layout_layout_columnWeight 9
-int styleable GridLayout_Layout_layout_gravity 10
-int styleable GridLayout_Layout_layout_row 11
-int styleable GridLayout_Layout_layout_rowSpan 12
-int styleable GridLayout_Layout_layout_rowWeight 13
 int[] styleable ImageFilterView { 0x7f040034, 0x7f04007c, 0x7f040092, 0x7f04017a, 0x7f040191, 0x7f040274, 0x7f040275, 0x7f040276, 0x7f040277, 0x7f0403ba, 0x7f040408, 0x7f040409, 0x7f04040d, 0x7f04054a }
 int styleable ImageFilterView_altSrc 0
 int styleable ImageFilterView_blendSrc 1

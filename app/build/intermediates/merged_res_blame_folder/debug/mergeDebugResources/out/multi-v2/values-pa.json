@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-pa/values-pa.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\9b673fbb36d3bc0b5e1fb6ae3eb041b3\\transformed\\facebook-login-16.3.0\\res\\values-pa\\values-pa.xml",
