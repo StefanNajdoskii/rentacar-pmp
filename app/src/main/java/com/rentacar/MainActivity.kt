@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -38,29 +39,39 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        FirebaseAnalytics.getInstance(this)
+        try {
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+            FirebaseAnalytics.getInstance(this)
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+            setSupportActionBar(binding.toolbar)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.carListFragment, R.id.bookingHistoryFragment, R.id.profileFragment)
-        )
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+                ?: run {
+                    Log.e(TAG, "NavHostFragment not found — finishing")
+                    finish()
+                    return
+                }
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.bottomNavigation.setupWithNavController(navController)
+            navController = navHostFragment.navController
 
-        // Only on the very first time MainActivity loads after the displayNameSet flag is
-        // unset — gated on a SharedPreferences boolean so this never re-fires once dismissed.
-        if (savedInstanceState == null) {
-            requestNotificationPermissionIfNeeded()
-            maybeShowDisplayNameDialog()
+            appBarConfiguration = AppBarConfiguration(
+                setOf(R.id.carListFragment, R.id.bookingHistoryFragment, R.id.profileFragment)
+            )
+
+            setupActionBarWithNavController(navController, appBarConfiguration)
+            binding.bottomNavigation.setupWithNavController(navController)
+
+            if (savedInstanceState == null) {
+                requestNotificationPermissionIfNeeded()
+                maybeShowDisplayNameDialog()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Crash in onCreate", e)
+            finish()
         }
     }
 
@@ -74,40 +85,57 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun maybeShowDisplayNameDialog() {
+        if (isFinishing || isDestroyed) return
+
         val prefs = getSharedPreferences(RentACarApp.PREFS_NAME, Context.MODE_PRIVATE)
         if (prefs.getBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, false)) return
 
-        val user = FirebaseAuth.getInstance().currentUser ?: return
+        // Re-check auth state here; Facebook login may not populate currentUser
+        // synchronously in all SDK versions.
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            Log.w(TAG, "maybeShowDisplayNameDialog: currentUser is null, skipping dialog")
+            prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
+            return
+        }
 
-        val dialogBinding = DialogDisplayNameBinding.inflate(layoutInflater)
-        dialogBinding.etName.setText(user.displayName ?: "")
+        try {
+            val dialogBinding = DialogDisplayNameBinding.inflate(layoutInflater)
+            dialogBinding.etName.setText(user.displayName ?: "")
 
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.dialog_display_name_title)
-            .setMessage(R.string.dialog_display_name_message)
-            .setView(dialogBinding.root)
-            .setPositiveButton(R.string.action_save) { _, _ ->
-                val name = dialogBinding.etName.text.toString().trim()
-                if (name.isNotEmpty()) {
-                    lifecycleScope.launch {
-                        try {
-                            user.updateProfile(
-                                userProfileChangeRequest { displayName = name }
-                            ).await()
-                        } catch (_: Exception) {
-                            // Display-name update is optional — keep the flag set anyway.
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.dialog_display_name_title)
+                .setMessage(R.string.dialog_display_name_message)
+                .setView(dialogBinding.root)
+                .setPositiveButton(R.string.action_save) { _, _ ->
+                    val name = dialogBinding.etName.text.toString().trim()
+                    if (name.isNotEmpty()) {
+                        lifecycleScope.launch {
+                            try {
+                                // Re-fetch currentUser inside the lambda: the `user` captured at
+                                // dialog-build time may be stale by the time the button is clicked.
+                                val freshUser = FirebaseAuth.getInstance().currentUser
+                                freshUser?.updateProfile(
+                                    userProfileChangeRequest { displayName = name }
+                                )?.await()
+                            } catch (e: Exception) {
+                                Log.w(TAG, "Display name update failed", e)
+                            }
                         }
                     }
+                    prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
                 }
-                prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
-            }
-            .setNegativeButton(R.string.action_skip) { _, _ ->
-                prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
-            }
-            .setCancelable(false)
-            .show()
+                .setNegativeButton(R.string.action_skip) { _, _ ->
+                    prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
+                }
+                .setCancelable(false)
+                .show()
 
-        dialogBinding.etName.requestFocus()
+            dialogBinding.etName.requestFocus()
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to show display name dialog", e)
+            prefs.edit().putBoolean(RentACarApp.KEY_DISPLAY_NAME_SET, true).apply()
+        }
     }
 
     /**
@@ -122,4 +150,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean =
         navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 }

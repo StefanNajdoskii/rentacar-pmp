@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-xhdpi-v4/values-xhdpi-v4.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-xhdpi-v4/values-xhdpi-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\b48e12f15f9becc6b72d6ea8db21c4a5\\transformed\\payments-core-20.52.0\\res\\values-xhdpi-v4\\values-xhdpi-v4.xml",

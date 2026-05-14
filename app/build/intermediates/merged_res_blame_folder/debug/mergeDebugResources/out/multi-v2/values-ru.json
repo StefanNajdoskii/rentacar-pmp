@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-ru/values-ru.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-ru/values-ru.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\4d40f14b45c564d00b1c1c3789736545\\transformed\\stripe-core-20.52.0\\res\\values-ru\\values-ru.xml",

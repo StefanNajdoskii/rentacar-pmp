@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rentacar.app-mergeDebugResources-113:/values-el-rGR/values-el-rGR.xml",
+            "outputFile": "com.rentacar.app-mergeDebugResources-112:/values-el-rGR/values-el-rGR.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Stefan\\.gradle\\caches\\9.0.0\\transforms\\c657d5e3595e7341a9dd15cb5fcf2c5a\\transformed\\paymentsheet-20.52.0\\res\\values-el-rGR\\values-el-rGR.xml",
