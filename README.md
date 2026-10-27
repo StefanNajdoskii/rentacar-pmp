@@ -15,7 +15,6 @@ Repository: https://github.com/StefanNajdoskii/rentacar-pmp
 - [Repository Structure](#repository-structure)
 - [Quick Start](#quick-start)
 - [Firebase Setup](#firebase-setup)
-- [Screenshots](#screenshots)
 - [Maintainers](#maintainers)
 
 ---
