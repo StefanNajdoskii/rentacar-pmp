@@ -181,18 +181,6 @@ cars/{carId}
     description    String
 ```
 
----
-
-## Screenshots
-
-Screenshots will be added once the app is running on a device or emulator.
-
-| Cars | Car Detail | Booking | History | Profile |
-|------|------------|---------|---------|---------|
-| coming soon | coming soon | coming soon | coming soon | coming soon |
-
----
-
 ## Maintainers
 
 | Name | Role | Institution | Period |
